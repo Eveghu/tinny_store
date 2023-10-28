@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoriesController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +22,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::post('categories/create', [App\Http\Controllers\CategoriesController::class, 'create']);
+Route::resource('categories', CategoriesController::class);
+
+
+Route::get('/categories/{id}/editcategory', [CategoriesController::class, 'edit'])->name('categories.edit');
+
+
+Route::post('categories/delete/{id}',[CategoriesController::class, 'destroy']);
