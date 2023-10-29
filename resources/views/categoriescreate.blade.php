@@ -35,7 +35,7 @@
 
         <button type="submit" class="btn custom-button">GUARDAR</a>
         <a href="{{ route('home') }}" class="btn custom-button">VOLVER AL MENÚ</a>
-        <a href="{{ route('categories.index') }}" class="btn custom-button">CATEGORÍAS</a>
+        <a href="{{ route('categories.index') }}" class="btn custom-button">VER CATEGORÍAS</a>
 
 
 

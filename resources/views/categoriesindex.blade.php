@@ -35,13 +35,15 @@
                 <td>{{ $category->id }}</td>
                 <td>{{ $category->category_name }}</td>
                 <td>
-                    <a href="/categories/{{$category->id}}/editcategory" class="btn custom-button">EDITAR</a>
-                    <form method="POST" action="{{ route('categories.destroy', $category->id) }}">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger " 
-                        onclick="return confirm('Seguro que quieres eliminar esta categoría?')">Eliminar</button>
-                    </form>
+                    <div class="d-flex">
+    <a href="/categories/{{$category->id}}/editcategory" class="btn custom-button">EDITAR</a>
+    <form method="POST" action="{{ route('categories.destroy', $category->id) }}">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger" onclick="return confirm('Seguro que quieres eliminar esta categoría?')">ELIMINAR</button>
+    </form>
+</div>
+
                 </td>
             </tr>
             @endforeach
