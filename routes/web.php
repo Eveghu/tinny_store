@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\SellsController;
 
 
 /*
@@ -29,6 +30,8 @@ Route::post('categories/create', [App\Http\Controllers\CategoriesController::cla
 Route::resource('categories', CategoriesController::class);
 Route::post('products/create', [App\Http\Controllers\ProductsController::class, 'create']);
 Route::resource('products', ProductsController::class);
+Route::post('sells/create', [App\Http\Controllers\SellsController::class, 'create']);
+Route::resource('sells', SellsController::class);
 
 
 Route::get('/categories/{id}/editcategory', [CategoriesController::class, 'edit'])->name('categories.edit');

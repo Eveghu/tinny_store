@@ -23,6 +23,7 @@
     <div class="card-body">
         <h5 class="card-title">{{$product->product_name}}</h5>
         <p class="card-text">ID PRODUCTO: {{$product->id}}</p>
+        <p class="card-text">CATEGORÍA: {{ $product->category->category_name }}</p>
         <p class="card-text">DESCRIPCIÓN: {{$product->description}}</p>
         <p class="card-text">COLOR: {{$product->color}}</p>
         <p class="card-text">TALLA: {{$product->size}}</p>

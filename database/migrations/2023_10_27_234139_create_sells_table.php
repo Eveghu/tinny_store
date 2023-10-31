@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('sells', function (Blueprint $table) {
             $table->id();
             $table->integer('amount');
-            $table->decimal('t_price', 8, 2);
             $table->string('date', 45);
             $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')
@@ -22,6 +21,8 @@ return new class extends Migration
                 ->on('products')
                 ->onUpdate('NO ACTION')
                 ->onDelete('NO ACTION'); // Evitará la eliminación en cascada
+                $table->timestamps();
+
         });
     }
 

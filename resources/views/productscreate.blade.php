@@ -30,6 +30,7 @@
         <div class="mb-3">
             <label for="category_id">CATEGORÍA:</label>
             <select name="category_id" id="category_id" class="form-control">
+                <option value="">Selecciona una categoría</option>
                 @foreach ($categories as $category)
                     <option value="{{ $category->id }}">{{ $category->category_name }}</option>
                 @endforeach
@@ -55,7 +56,7 @@
     <div class="row">
         <div class="col-2">
             <div class="form-check">
-                <input type="checkbox" name="size[]" class="form-check-input" value="CH" id="size">
+                <input type="checkbox" name="size[]" class="form-check-input" value="CH" id="size" {{ isset($size) && $size == 'CH' ? 'checked' : '' }}>
                 <label class="form-check-label" for="size">CH</label>
             </div>
         </div>
@@ -76,7 +77,8 @@
                 <input type="checkbox" name="size[]" class="form-check-input" value="XG" id="size">
                 <label class="form-check-label" for="size">XG</label>
             </div>
-        </div><div class="col-2">
+        </div>
+        <div class="col-2">
             <div class="form-check">
                 <input type="checkbox" name="size[]" class="form-check-input" value="UNI" id="size">
                 <label class="form-check-label" for="size">UNI</label>
