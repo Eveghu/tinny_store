@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Sells;
 use App\Models\Products;
 use Illuminate\Http\Request;
+use PDF;
 
 class SellsController extends Controller
 {
@@ -34,4 +35,10 @@ public function show(Sells $sell)
 {
     return view('sellsshow', compact('sell'));
 }
+        public function PDF()
+        {
+            $sells = sells::all();
+            $pdf = PDF::loadview('pdf.listadosells', compact('sells'));
+            return $pdf->download('listadosells.pdf');
+        }
 }

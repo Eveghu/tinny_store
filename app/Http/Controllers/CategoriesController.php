@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Categories;
 use Illuminate\Http\Request;
-
+use PDF;
 class CategoriesController extends Controller
 {
     public function index()
@@ -72,6 +72,11 @@ public function update(Request $request, $id)
     }
     
         // ...
-    
+    public function PDF()
+    {
+        $categories = categories::all();
+        $pdf = PDF::loadview('pdf.listadocategories', compact('categories'));
+        return $pdf->download('listadocategories.pdf');
+    }
     
 }

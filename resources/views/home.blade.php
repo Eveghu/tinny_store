@@ -126,7 +126,7 @@
             </div>
         </div>
 
-        <img src="{{ asset('img.jpeg') }}" class="img-fluid">
+        <img src="{{ asset('images/img.jpeg') }}" class="img-fluid">
         <p style="font-size: 24px; font-weight: bold;">¡LA VIDA ES MUY CORTA COMO PARA NO VESTIRTE COMO QUIERAS !</p>
 
     </body>

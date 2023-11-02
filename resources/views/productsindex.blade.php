@@ -72,5 +72,7 @@
 <div style="margin-top: 20px; margin-left: 120px;">
     <a href="{{ route('home') }}" class="btn custom-button">VOLVER AL MENÚ</a>
     <a href="{{ route('products.create') }}" class="btn custom-button">AGREGAR PRODUCTO</a>
+    <a href="{{ route('listaproduct.pdf') }}" class="btn custom-button">DESCARGAR PDF</a>
+
 </div>
 @endsection

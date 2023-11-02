@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Products;
 use App\Models\Categories;
 use Illuminate\Http\Request;
-
+use PDF;
 class ProductsController extends Controller
 {
     public function index()
@@ -107,6 +107,12 @@ public function update(Request $request, $id)
     }
     
         // ...
+        public function PDF()
+        {
+            $products = products::all();
+            $pdf = PDF::loadview('pdf.listadoproducts', compact('products'));
+            return $pdf->download('listadoproducts.pdf');
+        }
     
     
 }

@@ -1,6 +1,22 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    .custom-button {
+      font-size: 14px; /* Reduce el tamaño de la fuente */
+      background-color: #ff8bb4; /* Cambia el color de fondo a tu elección */
+      color: #fff; /* Cambia el color del texto a blanco */
+      border: none;
+      padding: 5px 10px; /* Añade un espacio interno al botón */
+      border-radius: 5px; /* Añade bordes redondeados */
+      transition: background-color 0.3s; /* Agrega una transición al color de fondo */
+  
+      /* Estilo al pasar el mouse por encima (hover) */
+      &:hover {
+          background-color: #e7d8df; /* Cambia el color de fondo al pasar el mouse */
+      }
+  }
+  </style>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -53,7 +69,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn custom-button">
                                     {{ __('Login') }}
                                 </button>
 
