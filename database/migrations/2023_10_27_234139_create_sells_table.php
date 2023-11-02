@@ -19,8 +19,8 @@ return new class extends Migration
             $table->foreign('product_id')
                 ->references('id')
                 ->on('products')
-                ->onUpdate('NO ACTION')
-                ->onDelete('NO ACTION'); // Evitará la eliminación en cascada
+                ->onUpdate('CASCADE')
+                ->onDelete('CASCADE'); // Evitará la eliminación en cascada
                 $table->timestamps();
 
         });

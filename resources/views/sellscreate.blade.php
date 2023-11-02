@@ -22,46 +22,40 @@
         .custom-button:hover {
           background-color: #ff8bb4; /* Cambia el color de fondo al pasar el mouse */
         }
-      </style>
-      
+    </style>
+
     <form method="POST" action="/sells">
         @csrf
         <div class="mb-3">
-          <label for="product_id">PRODUCTO:</label>
-          <select name="product_id" id="product_id" class="form-control">
-              <option value="">Selecciona un producto</option>
-              @foreach ($products as $product)
-                  <option value="{{ $product->id }}">{{ $product->product_name }}</option>
-              @endforeach
-          </select>
-      </div>
-      <div class="mb-3">
-        <label for="product_id">COLOR:</label>
-        <select name="color" id="color" class="form-control">
-            <option value="">Selecciona un color</option>
-            @foreach ($products as $product)
-                <option value="{{ $product->id }}">{{ $product->color }}</option>
-            @endforeach
-        </select>
-    </div>
-      
+            <label for="product_id">PRODUCTO:</label>
+            <select name="product_id" id="product_id" class="form-control">
+                <option value="">Selecciona un producto</option>
+                @foreach ($products as $product)
+                    <option value="{{ $product->id }}">{{ $product->product_name }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="color">COLOR:</label>
+            <select name="color" id="color" class="form-control">
+                <option value="">Selecciona un color</option>
+                @foreach ($products as $product)
+                    <option value="{{ $product->color }}">{{ $product->color }}</option>
+                @endforeach
+            </select>
+        </div>
         <div class="mb-3">
             <label for="amount">CANTIDAD:</label>
             <input type="text" name="amount" id="amount" class="form-control">
         </div>
-        
-      
         <div class="mb-3">
             <label for="date">FECHA:</label>
             <input type="date" name="date" id="date" class="form-control">
         </div>
-
-        <button type="submit" class="btn custom-button">GUARDAR</a>
+        <button type="submit" class="btn custom-button">GUARDAR</button>
         <a href="{{ route('home') }}" class="btn custom-button">VOLVER AL MENÚ</a>
         <a href="{{ route('sells.index') }}" class="btn custom-button">VER VENTAS</a>
-
-
-
     </form>
 </div>
 @endsection
+
