@@ -21,7 +21,47 @@
         }
     }
     </style>
-    <table class="table" style="margin-top: 50px;"> <!-- Agregamos un margen superior -->
+    <form action="{{ route('searchcategory') }}" method="GET" class="d-flex" role="search">
+        <input type="search" name="query" placeholder="Buscar..." class="form-control me-2" >
+        <button class="btn btn-outline-warning" type="submit">Buscar</button>
+    </form>
+    @if(isset($results) && count($results) > 0)
+    <table  class="table" style="margin-top: 50px;"> <!-- Agregamos un margen superior -->
+        
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre de la Categoría</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($results as $category)
+            <tr>
+                <td>{{ $category->id }}</td>
+                <td>{{ $category->category_name }}</td>
+                <td>
+                    <div class="d-flex">
+    <a href="/categories/{{$category->id}}/editcategory" class="btn custom-button">EDITAR</a>
+    <form method="POST" action="{{ route('categories.destroy', $category->id) }}">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="btn btn-danger" onclick="return confirm('Seguro que quieres eliminar esta categoría?')">ELIMINAR</button>
+    </form>
+</div>
+
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+@else
+
+
+
+
+    <table  class="table" style="margin-top: 50px;"> <!-- Agregamos un margen superior -->
+        
         <thead>
             <tr>
                 <th>ID</th>
@@ -49,6 +89,7 @@
             @endforeach
         </tbody>
     </table>
+    @endif
 </div>
 <div style="margin-top: 20px; margin-left: 120px;">
     <a href="{{ route('home') }}" class="btn custom-button">VOLVER AL MENÚ</a>

@@ -21,6 +21,46 @@
         }
     }
     </style>
+   <form action="{{ route('searchsell') }}" method="GET" class="d-flex" role="search">
+    <input type="search" name="query" placeholder="Buscar..." class="form-control me-2" >
+    <button class="btn btn-outline-warning" type="submit">Buscar</button>
+</form>
+@if(isset($results) && count($results) > 0)
+
+
+    <table class="table" style="margin-top: 50px;"> <!-- Agregamos un margen superior -->
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre del Producto</th>
+                <th>Descripción</th>
+                <th>Cantidad</th>
+                <th>Fecha</th>
+                <th>Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($results as $sell)
+            <tr>
+                <td>{{ $sell->id }}</td>
+                <td>{{ $sell->product->product_name }}</td>
+                <td>{{ $sell->product->description }}</td>
+                <td>{{ $sell->amount }}</td>
+                <td>{{ $sell->date }}</td>
+                <td>    
+                <a href="/sells/{{ $sell->id }}" class="btn custom-button">DETALLES</a>
+                <tr>
+
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+    @else
+
+
+
+
     <table class="table" style="margin-top: 50px;"> <!-- Agregamos un margen superior -->
         <thead>
             <tr>
@@ -49,6 +89,7 @@
             @endforeach
         </tbody>
     </table>
+    @endif
 </div>
 <div style="margin-top: 20px; margin-left: 120px;">
     <a href="{{ route('home') }}" class="btn custom-button">VOLVER AL MENÚ</a>

@@ -43,3 +43,7 @@ Route::get('pdf1', [CategoriesController::class, 'pdf'])->name('listacategory.pd
 Route::get('pdf2', [SellsController::class, 'pdf'])->name('listasell.pdf');
 Route::get('pdf3', [ProductsController::class, 'pdf'])->name('listaproduct.pdf');
 
+
+Route::get('/searchcategory', [CategoriesController::class, 'index'])->name('searchcategory');
+Route::get('/searchproduct', [ProductsController::class, 'index'])->name('searchproduct');
+Route::get('/searchsell', [SellsController::class, 'index'])->name('searchsell');

@@ -7,23 +7,42 @@ use Illuminate\Http\Request;
 use PDF;
 class ProductsController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $products = Products::all();
-        $categories = Categories::all(); // Reemplaza 'Category' con el nombre de tu modelo de categorías
-        return view('productsindex', compact('products', 'categories'));
+        
+        $query = $request->input('query');
+    
+        if ($query) {
+            $results = Products::search($query)->get();
+            $products = Products::with('category')->get();
+            return view('productsindex', compact('products', 'results'));
+        } else {
+            $products = Products::with('category')->get();
+            return view('productsindex', compact('products'));
+        }
     }
     
 
     public function create()
     {
+        $product = new Products(); // Crea una nueva instancia del modelo de Producto o consulta un producto existente desde la base de datos.
         $categories = Categories::all(); // Reemplaza 'Category' con el modelo de tus categorías.
-        return view('productscreate', compact('categories'));
+        return view('productscreate', compact('product', 'categories'));
     }
     
 
     public function store(Request $request)
     {
+        $request->validate([
+            'product_name' => 'required|string|max:30',
+            'description' => 'required|string|max:45',
+            'color' => 'required|string|max:45',
+            'assor_quant' => 'required|integer',
+            'sold_quant' => 'required|integer',
+            'total_quant' => 'required|integer',
+            'price' => 'required|numeric|between:0.01,999999.99', // Numeric value with 2 decimal places.
+        ]);
+        
         //return $request->all();
         $product = new Products();
         $product->category_id = $request->input('category_id'); // Asigna la categoría
@@ -58,16 +77,15 @@ class ProductsController extends Controller
 public function update(Request $request, $id)
 {
     $request->validate([
-        'product_name' => 'required',
-        'description' => 'required',
-        'color' => 'required',
-        'size' => 'required',
-        'assor_quant' => 'required|numeric',
-        'sold_quant' => 'required|numeric',
-        'total_quant' => 'required|numeric',
-        'price' => 'required|numeric',
-
+        'product_name' => 'required|string|max:30',
+        'description' => 'required|string|max:45',
+        'color' => 'required|string|max:45',
+        'assor_quant' => 'required|integer',
+        'sold_quant' => 'required|integer',
+        'total_quant' => 'required|integer',
+        'price' => 'required|numeric|between:0.01,999999.99', // Numeric value with 2 decimal places.
     ]);
+    
 
     $product = Products::find($id);
 

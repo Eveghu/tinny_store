@@ -8,11 +8,21 @@ use PDF;
 
 class SellsController extends Controller
 {
-    public function index()
-    {
-        $sells=Sells::all();
+    public function index(Request $request)
+{
+    $query = $request->input('query');
+    
+    if ($query) {
+        $results = Sells::search($query)->get();
+        $sells = Sells::with('product')->get();
+        return view('sellsindex', compact('sells', 'results'));
+    } else {
+        $sells = Sells::with('product')->get();
         return view('sellsindex', compact('sells'));
     }
+}
+
+
 
     public function create()
     {
@@ -21,6 +31,11 @@ class SellsController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'amount' => 'required|integer',
+            'date' => 'required|string|max:45',
+        ]);
+        
         //return $request->all();
         $sell = new Sells();
         $sell->product_id = $request->input('product_id'); // Asigna la categoría

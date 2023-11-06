@@ -130,18 +130,16 @@
         <p style="font-size: 24px; font-weight: bold;">¡LA VIDA ES MUY CORTA COMO PARA NO VESTIRTE COMO QUIERAS !</p>
 
     </body>
-
-    <div class="row justify-content-center mt-4">
-        <div class="col-md-8">
-            <div class="card-body">
                 @if (session('status'))
                     <div class="alert alert-success" role="alert">
                         {{ session('status') }}
                     </div>
-                @endif
+                    @endif
             </div>
         </div>
     </div>
 </div>
+<!-- Cliengo installation code for 127.0.0.1:8000 --> <script type="text/javascript">(function () { var ldk = document.createElement('script'); ldk.type = 'text/javascript'; ldk.async = true; ldk.src = 'https://s.cliengo.com/weboptimizer/65442630bc71c70032c73863/65442633bc71c70032c73866.js?platform=view_installation_code'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ldk, s); })();</script>
+
 @endsection
 

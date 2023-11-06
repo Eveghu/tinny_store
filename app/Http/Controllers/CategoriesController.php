@@ -6,10 +6,19 @@ use Illuminate\Http\Request;
 use PDF;
 class CategoriesController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $categories=Categories::all();
-        return view('categoriesindex', compact('categories'));
+       
+        $query = $request->input('query');
+    
+        if ($query) {
+            $results = Categories::search($query)->get();
+            $categories=Categories::all();
+            return view('categoriesindex', compact('categories', 'results'));
+        } else {
+            $categories=Categories::all();
+            return view('categoriesindex', compact('categories'));
+        }
     }
 
     public function create()
@@ -19,6 +28,14 @@ class CategoriesController extends Controller
 
     public function store(Request $request)
     {
+        
+    $request->validate([
+        'category_name' => 'required|string|max:20', // category_name es requerido y tiene un máximo de 20 caracteres
+    ]);
+
+    // Aquí continúa tu lógica para guardar el registro en la base de datos
+
+
         //return $request->all();
         $category = new Categories();
         $category -> category_name = $request -> input('category_name');
@@ -39,7 +56,7 @@ public function edit($id)
 public function update(Request $request, $id)
 {
     $request->validate([
-        'category_name' => 'required',
+        'category_name' => 'required|string|max:20', // category_name es requerido y tiene un máximo de 20 caracteres
     ]);
 
     $category = Categories::find($id);
