@@ -64,7 +64,6 @@
         
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Nombre de la Categoría</th>
                 <th>Opciones</th>
             </tr>
@@ -72,7 +71,6 @@
         <tbody>
             @foreach ($categories as $category)
             <tr>
-                <td>{{ $category->id }}</td>
                 <td>{{ $category->category_name }}</td>
                 <td>
                     <div class="d-flex">

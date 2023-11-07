@@ -35,15 +35,7 @@
                 @endforeach
             </select>
         </div>
-        <div class="mb-3">
-            <label for="color">COLOR:</label>
-            <select name="color" id="color" class="form-control">
-                <option value="">Selecciona un color</option>
-                @foreach ($products as $product)
-                    <option value="{{ $product->color }}">{{ $product->color }}</option>
-                @endforeach
-            </select>
-        </div>
+       
         <div class="mb-3">
             <label for="amount">CANTIDAD:</label>
             <input type="text" name="amount" id="amount" class="form-control">

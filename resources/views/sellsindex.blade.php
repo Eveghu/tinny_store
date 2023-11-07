@@ -31,7 +31,6 @@
     <table class="table" style="margin-top: 50px;"> <!-- Agregamos un margen superior -->
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Nombre del Producto</th>
                 <th>Descripción</th>
                 <th>Cantidad</th>
@@ -42,7 +41,6 @@
         <tbody>
             @foreach ($results as $sell)
             <tr>
-                <td>{{ $sell->id }}</td>
                 <td>{{ $sell->product->product_name }}</td>
                 <td>{{ $sell->product->description }}</td>
                 <td>{{ $sell->amount }}</td>
@@ -64,7 +62,6 @@
     <table class="table" style="margin-top: 50px;"> <!-- Agregamos un margen superior -->
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Nombre del Producto</th>
                 <th>Descripción</th>
                 <th>Cantidad</th>
@@ -76,7 +73,6 @@
         <tbody>
             @foreach ($sells as $sell)
             <tr>
-                <td>{{ $sell->id }}</td>
                 <td>{{ $sell->product->product_name }}</td>
                 <td>{{ $sell->product->description }}</td>
                 <td>{{ $sell->amount }}</td>
