@@ -25,7 +25,14 @@
         <p class="card-text">CATEGORÍA: {{ $sell->product->category->category_name }}</p>
         <p class="card-text">NOMBRE DEL PRODUCTO: {{ $sell->product->product_name }}</p>
         <p class="card-text">DESCRIPCIÓN: {{ $sell->product->description }}</p>
+        <p class="card-text">PRECIO UNITARIO: {{ $sell->product->price }}</p>
         <p class="card-text">CANTIDAD VENDIDA: {{$sell->amount}}</p>
+        @php
+    // Calcula el costo total multiplicando el precio unitario por la cantidad vendida
+    $costoTotal = $sell->product->price * $sell->amount;
+@endphp
+
+<p class="card-text">COSTO TOTAL: {{ $costoTotal }}</p>
         <p class="card-text">FECHA: {{$sell->date}}</p>
 </div>
 </div>

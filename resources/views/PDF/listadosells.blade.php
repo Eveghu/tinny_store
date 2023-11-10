@@ -28,7 +28,6 @@
     <table class="table table-hover table-striped">
         <thead>
            <tr>
-            <th>ID</th>
             <th>Nombre del Producto</th>
             <th>Descripción</th>
             <th>Cantidad</th>
@@ -38,7 +37,6 @@
         <tbody>
             @foreach ($sells as $sell)
                 <tr>
-                    <td>{{ $sell->id }}</td>
                     <td>{{ $sell->product->product_name }}</td>
                     <td>{{ $sell->product->description }}</td>
                     <td>{{ $sell->amount }}</td>

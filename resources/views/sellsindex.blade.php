@@ -31,20 +31,29 @@
     <table class="table" style="margin-top: 50px;"> <!-- Agregamos un margen superior -->
         <thead>
             <tr>
+                <th>Fecha</th>
                 <th>Nombre del Producto</th>
                 <th>Descripción</th>
                 <th>Cantidad</th>
-                <th>Fecha</th>
+                <th>Costo Total</th>
                 <th>Opciones</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($results as $sell)
             <tr>
+                <td>{{ $sell->date }}</td>
+
                 <td>{{ $sell->product->product_name }}</td>
                 <td>{{ $sell->product->description }}</td>
                 <td>{{ $sell->amount }}</td>
-                <td>{{ $sell->date }}</td>
+                @php
+                // Calcula el costo total multiplicando el precio unitario por la cantidad vendida
+                $costoTotal = $sell->product->price * $sell->amount;
+            @endphp
+
+            <td>{{ $costoTotal }}</td>
+                
                 <td>    
                 <a href="/sells/{{ $sell->id }}" class="btn custom-button">DETALLES</a>
                 <tr>
@@ -62,10 +71,11 @@
     <table class="table" style="margin-top: 50px;"> <!-- Agregamos un margen superior -->
         <thead>
             <tr>
+                <th>Fecha</th>
                 <th>Nombre del Producto</th>
                 <th>Descripción</th>
                 <th>Cantidad</th>
-                <th>Fecha</th>
+                <th>Costo Total</th>
                 <th>Opciones</th>
 
             </tr>
@@ -73,10 +83,17 @@
         <tbody>
             @foreach ($sells as $sell)
             <tr>
+                <td>{{ $sell->date }}</td>
+
                 <td>{{ $sell->product->product_name }}</td>
                 <td>{{ $sell->product->description }}</td>
                 <td>{{ $sell->amount }}</td>
-                <td>{{ $sell->date }}</td>
+                @php
+                // Calcula el costo total multiplicando el precio unitario por la cantidad vendida
+                $costoTotal = $sell->product->price * $sell->amount;
+            @endphp
+
+            <td>{{ $costoTotal }}</td>
                 <td>    <a href="/sells/{{ $sell->id }}" class="btn custom-button">DETALLES</a>
                 <tr>
 

@@ -44,7 +44,6 @@
                 <br>
                 <br>
                 <br>
-                <br>
               <img src="images/logo.jpg"  alt="Trendy Pants and Shoes"
                 class="img-fluid rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
             </div>
