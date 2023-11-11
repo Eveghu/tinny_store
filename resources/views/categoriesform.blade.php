@@ -13,8 +13,15 @@
             @csrf
 
             <div class="mb-3">
-                <label for="category_name" class="form-label">Nombre de la Categoría:</label>
-                <input type="text" name="category_name" value="{{ $category->category_name }}" class="form-control">
+                <label for="category_name" class="form-label">NOMBRE DE LA CATEGORÍA:</label>
+                <input type="text" name="category_name" value="{{ $category->category_name }}" class="form-control{{ $errors->has('category_name') ? ' is-invalid' : '' }}">
+                
+                @error('category_name')
+                    <div class="invalid-feedback" style="color: red;">
+                        {{ $message }}
+                    </div>
+                @enderror
+                
             </div>
 
             <!-- Agrega otros campos para la edición de la categoría aquí -->
@@ -32,8 +39,13 @@
             @csrf
 
             <div class="mb-3">
-                <label for="category_name">NOMBRE DE LA CATEGORÍA:</label>
-                <input type="text" name="category_name" id="category_name" class="form-control">
+                {!! Form::label('category_name', 'NOMBRE DE LA CATEGORÍA:', ['class' => 'form-label']) !!}
+                {!! Form::text('category_name', old('category_name'), ['class' => 'form-control'.($errors->has('category_name') ? ' is-invalid' : '')]) !!}
+                @error('category_name')
+                <div class="invalid-feedback" style="color: red;">
+                    {{ $message }}
+                </div>
+                @enderror
             </div>
 
             <button type="submit" class="btn custom-button">GUARDAR</button>

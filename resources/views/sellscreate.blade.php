@@ -37,9 +37,15 @@
         </div>
        
         <div class="mb-3">
-            <label for="amount">CANTIDAD:</label>
-            <input type="text" name="amount" id="amount" class="form-control">
+            <label for="amount" class="form-label">CANTIDAD:</label>
+            <input type="text" name="amount" id="amount" class="form-control{{ $errors->has('amount') ? ' is-invalid' : '' }}" value="{{ old('amount') }}">
+            @error('amount')
+            <div class="invalid-feedback" style="color: red;">
+                {{ $message }}
+            </div>
+            @enderror
         </div>
+        
         <div class="mb-3">
             <label for="date">FECHA:</label>
             <input type="date" name="date" id="date" class="form-control">

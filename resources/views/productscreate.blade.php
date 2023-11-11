@@ -39,18 +39,34 @@
         </div>
 
         <div class="mb-3">
-            <label for="product_name">NOMBRE DEL PRODUCTO:</label>
-            <input type="text" name="product_name" id="product_name" class="form-control">
+            <label for="amount" class="form-label">NOMBRE DEL PRODUCTO:</label>
+            <input type="text" name="product_name" id="product_name" class="form-control{{ $errors->has('product_name') ? ' is-invalid' : '' }}" value="{{ old('product_name') }}">
+            @error('product_name')
+            <div class="invalid-feedback" style="color: red;">
+                {{ $message }}
+            </div>
+            @enderror
         </div>
         <div class="mb-3">
-            <label for="description">DESCRIPCIÓN:</label>
-            <input type="text" name="description" id="description" class="form-control">
+            <label for="description" class="form-label">DESCRIPCIÓN:</label>
+            <input type="text" name="description" id="description" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" value="{{ old('description') }}">
+            @error('description')
+            <div class="invalid-feedback" style="color: red;">
+                {{ $message }}
+            </div>
+            @enderror
         </div>
 
         <div class="mb-3">
-            <label for="color">COLOR:</label>
-            <input type="text" name="color" id="color" class="form-control">
+            <label for="color" class="form-label">COLOR:</label>
+            <input type="text" name="color" id="color" class="form-control{{ $errors->has('color') ? ' is-invalid' : '' }}" value="{{ old('color') }}">
+            @error('color')
+            <div class="invalid-feedback" style="color: red;">
+                {{ $message }}
+            </div>
+            @enderror
         </div>
+
        <!-- Agrega esta sección en tu formulario de creación y edición -->
 <div class="mb-3">
     <label for="sizes">TALLAS:</label>
@@ -127,22 +143,43 @@
 
 
         </div>
-    <div class="mb-3">
-        <label for="assor_quant">CANTIDAD SURTIDA:</label>
-        <input type="text" name="assor_quant" id="assor_quant" class="form-control">
-    </div>
-    <div class="mb-3">
-        <label for="sold_quant">CANTIDAD VENDIDA:</label>
-        <input type="text" name="sold_quant" id="sold_quant" class="form-control">
-    </div>
-    <div class="mb-3">
-        <label for="total_quant">CANTIDAD TOTAL:</label>
-        <input type="text" name="total_quant" id="total_quant" class="form-control">
-    </div>
-    <div class="mb-3">
-        <label for="price">PRECIO:</label>
-        <input type="text" name="price" id="price" class="form-control">
-    </div>        
+        <div class="mb-3">
+            <label for="assor_quant" class="form-label">CANTIDAD SURTIDA:</label>
+            <input type="text" name="assor_quant" id="assor_quant" class="form-control{{ $errors->has('assor_quant') ? ' is-invalid' : '' }}" value="{{ old('assor_quant') }}">
+            @error('assor_quant')
+            <div class="invalid-feedback" style="color: red;">
+                {{ $message }}
+            </div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label for="sold_quant" class="form-label">CANTIDAD VENDIDA:</label>
+            <input type="text" name="sold_quant" id="sold_quant" class="form-control{{ $errors->has('sold_quant') ? ' is-invalid' : '' }}" value="{{ old('sold_quant') }}">
+            @error('sold_quant')
+            <div class="invalid-feedback" style="color: red;">
+                {{ $message }}
+            </div>
+            @enderror
+        </div>
+        <div class="mb-3">
+            <label for="total_quant" class="form-label">CANTIDAD TOTAL:</label>
+            <input type="text" name="total_quant" id="total_quant" class="form-control{{ $errors->has('total_quant') ? ' is-invalid' : '' }}" value="{{ old('total_quant') }}">
+            @error('total_quant')
+            <div class="invalid-feedback" style="color: red;">
+                {{ $message }}
+            </div>
+            @enderror
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">PRECIO:</label>
+            <input type="text" name="price" id="price" class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}" value="{{ old('price') }}">
+            @error('price')
+            <div class="invalid-feedback" style="color: red;">
+                {{ $message }}
+            </div>
+            @enderror
+        </div>     
 
 
 

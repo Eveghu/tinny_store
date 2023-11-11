@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title', 'Sells')
 @section('content')
-<h1 style="text-align: center;">DETALLES DE VENTA</h1>
+<h1 style="text-align: center;">DETALLE DE VENTA</h1>
 
 <div class="card text-center" style="width: 18rem; margin: 70px auto;">
     <style>
@@ -32,7 +32,7 @@
     $costoTotal = $sell->product->price * $sell->amount;
 @endphp
 
-<p class="card-text">COSTO TOTAL: {{ $costoTotal }}</p>
+<p class="card-text">COSTO TOTAL: $ {{ $costoTotal }}</p>
         <p class="card-text">FECHA: {{$sell->date}}</p>
 </div>
 </div>
