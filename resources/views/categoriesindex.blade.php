@@ -92,6 +92,11 @@
 <div style="margin-top: 20px; margin-left: 120px;">
     <a href="{{ route('home') }}" class="btn custom-button">VOLVER AL MENÚ</a>
     <a href="{{ route('categories.create') }}" class="btn custom-button">AGREGAR CATEGORÍA</a>
-    <a href="{{ route('listacategory.pdf') }}" class="btn custom-button">DESCARGAR PDF</a>
+
+    {{-- Verificar si hay resultados de búsqueda para mostrar o no el botón de descarga de PDF --}}
+    @if(!isset($results) || count($results) === 0)
+        <a href="{{ route('listacategory.pdf') }}" class="btn custom-button">DESCARGAR PDF</a>
+    @endif
 </div>
+
 @endsection
