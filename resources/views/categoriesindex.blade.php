@@ -30,7 +30,6 @@
         
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Nombre de la Categoría</th>
                 <th>Opciones</th>
             </tr>
@@ -38,7 +37,6 @@
         <tbody>
             @foreach ($results as $category)
             <tr>
-                <td>{{ $category->id }}</td>
                 <td>{{ $category->category_name }}</td>
                 <td>
                     <div class="d-flex">
@@ -65,6 +63,8 @@
         <thead>
             <tr>
                 <th>Nombre de la Categoría</th>
+                <th>Imagen de la Categoría</th>
+
                 <th>Opciones</th>
             </tr>
         </thead>
@@ -72,6 +72,10 @@
             @foreach ($categories as $category)
             <tr>
                 <td>{{ $category->category_name }}</td>
+                <td><img style="height: 200px; width: 200px;"
+                    class="card-img-top rounded-circle mx-auto d-block"
+                    src="/image_category/{{ $category->image_category }}" alt=""></td>
+
                 <td>
                     <div class="d-flex">
     <a href="/categories/{{$category->id}}/editcategory" class="btn custom-button">EDITAR</a>
@@ -93,7 +97,6 @@
     <a href="{{ route('home') }}" class="btn custom-button">VOLVER AL MENÚ</a>
     <a href="{{ route('categories.create') }}" class="btn custom-button">AGREGAR CATEGORÍA</a>
 
-    {{-- Verificar si hay resultados de búsqueda para mostrar o no el botón de descarga de PDF --}}
     @if(!isset($results) || count($results) === 0)
         <a href="{{ route('listacategory.pdf') }}" class="btn custom-button">DESCARGAR PDF</a>
     @endif

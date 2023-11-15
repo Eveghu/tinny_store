@@ -15,12 +15,22 @@
             <div class="mb-3">
                 <label for="category_name" class="form-label">NOMBRE DE LA CATEGORÍA:</label>
                 <input type="text" name="category_name" value="{{ $category->category_name }}" class="form-control{{ $errors->has('category_name') ? ' is-invalid' : '' }}">
+                <div class="mb-3">
+                    {{ Form::label('image_category', 'IMAGEN DE LA CATEGORÍA:', ['class' => 'form-label']) }}
+                    {{ Form::file('image_category', ['class' => 'form-control' . ($errors->has('image_category') ? ' is-invalid' : '')]) }}
                 
+                </div>
                 @error('category_name')
                     <div class="invalid-feedback" style="color: red;">
                         {{ $message }}
                     </div>
-                @enderror
+
+                       
+                    
+                    </div>
+            
+    @enderror
+</div>
                 
             </div>
 
@@ -35,7 +45,7 @@
         </form>
     @else
         <h1>AGREGAR CATEGORÍA</h1>
-        <form method="POST" action="/categories">
+        <form method="POST" action="/categories" enctype= "multipart/form-data">
             @csrf
 
             <div class="mb-3">
@@ -46,6 +56,11 @@
                     {{ $message }}
                 </div>
                 @enderror
+                <div class="col-md-6">
+                    {{ Form::label('image_category', 'IMAGEN DE LA CATEGORÍA:', ['class' => 'form-label']) }}
+                    {{ Form::file('image_category', ['class' => 'form-control' . ($errors->has('image_category') ? ' is-invalid' : '')]) }}
+                
+                </div>
             </div>
 
             <button type="submit" class="btn custom-button">GUARDAR</button>

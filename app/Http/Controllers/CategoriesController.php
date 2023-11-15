@@ -31,15 +31,21 @@ class CategoriesController extends Controller
         
     $request->validate([
         'category_name' => 'required|string|max:20', // category_name es requerido y tiene un máximo de 20 caracteres
+        'image_category' => 'required|image|mimes:jpeg,jpg,gif,svg|max:1048',    
     ]);
-
+    
     // Aquí continúa tu lógica para guardar el registro en la base de datos
 
 
         //return $request->all();
         $category = new Categories();
         $category -> category_name = $request -> input('category_name');
-        $category -> save();
+        if ($request->hasFile('image_category')) {
+            $imageName = time() . '.' . $request->image_category->extension(); // Cambiar "$request->image" a "$request->imagen_equipo"
+            $request->image_category->move(public_path('image_category'), $imageName);
+            $category->image_category=$imageName;
+    }        
+    $category -> save();
         return redirect()->route('categories.index');
     }
 
@@ -57,6 +63,8 @@ public function update(Request $request, $id)
 {
     $request->validate([
         'category_name' => 'required|string|max:20', // category_name es requerido y tiene un máximo de 20 caracteres
+        'image_category' => 'required|image|mimes:jpeg,jpg,gif,svg,png|max:1048',    
+
     ]);
 
     $category = Categories::find($id);
@@ -65,20 +73,34 @@ public function update(Request $request, $id)
         return redirect()->route('categories.index')->with('error', 'Category not found');
     }
 
-    $category->category_name = $request->input('category_name');
+    if ($request->hasFile('image_category')) {
+        // Eliminar la imagen anterior si existe
+        if ($category->image_category) {
+            $imagePath = public_path('image_category/') . $category->image_category;
+            if (file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+        }
+
+        $imageName = time() . '.' . $request->image_category->extension();
+        $request->image_category->move(public_path('image_category'), $imageName);
+
+        $category->image_category = $imageName; // Guardar el nombre de la nueva imagen en el modelo
+    }
     $category->save();
 
     return redirect()->route('categories.index')->with('success', 'Category updated successfully');
 }
 
 
-    // ...
-
 
     public function destroy($id)
     {
         $category = Categories::find($id);
-    
+        $imagePath = public_path('image_category/' . $category->image_category); // Ruta a la imagen en el sistema de archivos
+        if (file_exists($imagePath)) {
+            unlink($imagePath); // Elimina la imagen
+        }
         if (!$category) {
             return redirect('/categories')->with('error', 'La categoría no existe o ya ha sido eliminado');
         }

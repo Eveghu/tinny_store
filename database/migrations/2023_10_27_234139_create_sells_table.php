@@ -22,6 +22,7 @@ return new class extends Migration
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE'); // Evitará la eliminación en cascada
                 $table->timestamps();
+                
 
         });
     }
