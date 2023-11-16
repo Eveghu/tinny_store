@@ -26,30 +26,22 @@
         <button class="btn btn-outline-warning" type="submit">Buscar</button>
     </form>
     @if(isset($results) && count($results) > 0)
-    <table  class="table" style="margin-top: 50px;"> <!-- Agregamos un margen superior -->
-        
-        <thead>
-            <tr>
-                <th>Nombre de la Categoría</th>
-                <th>Opciones</th>
-            </tr>
-        </thead>
-        <tbody>
+    <div class="card text-center" style="width: 18rem; margin-top: 70px;">
             @foreach ($results as $category)
-            <tr>
-                <td>{{ $category->category_name }}</td>
-                <td>
-                    <div class="d-flex">
-    <a href="/categories/{{$category->id}}/editcategory" class="btn custom-button">EDITAR</a>
-    <form method="POST" action="{{ route('categories.destroy', $category->id) }}">
+            <img style="height: 100px; width: 100px; background-color: #EFEFEF; margin: 10px auto;"
+            class="card-img-top rounded-circle mx-auto d-block"
+            src="/image_category/{{ $category->image_category }}" alt="">
+          <div class="card-body">
+            <h6 class="card-subtitle mb-2 text-muted">{{ $category->category_name }}</h6>
+            <div class="d-flex justify-content-around">
+                <a href="/categories/{{$category->id}}/editcategory" class="custom-button">EDITAR</a>
+                <form method="POST" action="{{ route('categories.destroy', $category->id) }}">
         @csrf
         @method('DELETE')
         <button type="submit" class="btn btn-danger" onclick="return confirm('Seguro que quieres eliminar esta categoría?')">ELIMINAR</button>
     </form>
 </div>
 
-                </td>
-            </tr>
             @endforeach
         </tbody>
     </table>
@@ -58,39 +50,30 @@
 
 
 
-    <table  class="table" style="margin-top: 50px;"> <!-- Agregamos un margen superior -->
-        
-        <thead>
-            <tr>
-                <th>Nombre de la Categoría</th>
-                <th>Imagen de la Categoría</th>
-
-                <th>Opciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($categories as $category)
-            <tr>
-                <td>{{ $category->category_name }}</td>
-                <td><img style="height: 200px; width: 200px;"
-                    class="card-img-top rounded-circle mx-auto d-block"
-                    src="/image_category/{{ $category->image_category }}" alt=""></td>
-
-                <td>
-                    <div class="d-flex">
-    <a href="/categories/{{$category->id}}/editcategory" class="btn custom-button">EDITAR</a>
-    <form method="POST" action="{{ route('categories.destroy', $category->id) }}">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="btn btn-danger" onclick="return confirm('Seguro que quieres eliminar esta categoría?')">ELIMINAR</button>
-    </form>
+<div class="row mt-4">
+    @foreach ($categories as $category)
+    <div class="card" style="margin-top: 20px; margin-right: 20px; width: 200px;">
+        <img style="height: 100px; width: 100px; background-color: #EFEFEF; margin: 20px;"
+            class="card-img-top rounded-circle mx-auto d-block"
+        src="/image_category/{{ $category->image_category }}" alt="">
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">{{ $category->category_name }}</h6>
+                <div class="d-flex justify-content-around">
+                    <a href="/categories/{{$category->id}}/editcategory" class="custom-button">EDITAR</a>
+                    <form method="POST" action="{{ route('categories.destroy', $category->id) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Seguro que quieres eliminar esta categoría?')">ELIMINAR</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    @endforeach
 </div>
 
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+
+  </div>
+  
     @endif
 </div>
 <div style="margin-top: 20px; margin-left: 120px;">
