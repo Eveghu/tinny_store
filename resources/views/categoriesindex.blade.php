@@ -26,36 +26,12 @@
         <button class="btn btn-outline-warning" type="submit">Buscar</button>
     </form>
     @if(isset($results) && count($results) > 0)
-    <div class="card text-center" style="width: 18rem; margin-top: 70px;">
-            @foreach ($results as $category)
-            <img style="height: 100px; width: 100px; background-color: #EFEFEF; margin: 10px auto;"
-            class="card-img-top rounded-circle mx-auto d-block"
-            src="/image_category/{{ $category->image_category }}" alt="">
-          <div class="card-body">
-            <h6 class="card-subtitle mb-2 text-muted">{{ $category->category_name }}</h6>
-            <div class="d-flex justify-content-around">
-                <a href="/categories/{{$category->id}}/editcategory" class="custom-button">EDITAR</a>
-                <form method="POST" action="{{ route('categories.destroy', $category->id) }}">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="btn btn-danger" onclick="return confirm('Seguro que quieres eliminar esta categoría?')">ELIMINAR</button>
-    </form>
-</div>
-
-            @endforeach
-        </tbody>
-    </table>
-@else
-
-
-
-
-<div class="row mt-4">
-    @foreach ($categories as $category)
-    <div class="card" style="margin-top: 20px; margin-right: 20px; width: 200px;">
-        <img style="height: 100px; width: 100px; background-color: #EFEFEF; margin: 20px;"
-            class="card-img-top rounded-circle mx-auto d-block"
-        src="/image_category/{{ $category->image_category }}" alt="">
+    <div class="row mt-4">
+        @foreach ($results as $category)
+        <div class="card" style="margin-top: 20px; margin-right: 20px; width: 200px;">
+            <img style="height: 100px; width: 100px; background-color: #EFEFEF; margin: 20px;"
+                class="card-img-top rounded-circle mx-auto d-block"
+                src="/image_category/{{ $category->image_category }}" alt="">
             <div class="card-body">
                 <h6 class="card-subtitle mb-2 text-muted">{{ $category->category_name }}</h6>
                 <div class="d-flex justify-content-around">
@@ -68,7 +44,51 @@
                 </div>
             </div>
         </div>
-    @endforeach
+        @endforeach
+    </div>
+    
+    <div style="margin-top: 20px; margin-left: 450px;">
+        <a href="{{ route('home') }}" class="btn custom-button">VOLVER AL MENÚ</a>
+        <a href="{{ route('categories.create') }}" class="btn custom-button">AGREGAR CATEGORÍA</a>
+    </div>
+          
+            @else
+
+
+
+
+            <div class="row mt-4">
+                @foreach ($categories as $category)
+                <div class="card" style="margin-top: 20px; margin-right: 20px; width: 200px;">
+                    <img style="height: 100px; width: 100px; background-color: #EFEFEF; margin: 20px;"
+                        class="card-img-top rounded-circle mx-auto d-block"
+                        src="/image_category/{{ $category->image_category }}" alt="">
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">{{ $category->category_name }}</h6>
+                        <div class="d-flex justify-content-around">
+                            <a href="/categories/{{$category->id}}/editcategory" class="custom-button">EDITAR</a>
+                            <form method="POST" action="{{ route('categories.destroy', $category->id) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Seguro que quieres eliminar esta categoría?')">ELIMINAR</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+            
+            <div style="margin-top: 20px; margin-left: 300px;">
+                <a href="{{ route('home') }}" class="btn custom-button">VOLVER AL MENÚ</a>
+                <a href="{{ route('categories.create') }}" class="btn custom-button">AGREGAR CATEGORÍA</a>
+                @if(!isset($results) || count($results) === 0)
+                <a href="{{ route('listacategory.pdf') }}" class="btn custom-button">DESCARGAR PDF</a>
+            @endif
+            </div>
+            
+            </div>
+        </div>
+    
 </div>
 
 
@@ -76,13 +96,7 @@
   
     @endif
 </div>
-<div style="margin-top: 20px; margin-left: 120px;">
-    <a href="{{ route('home') }}" class="btn custom-button">VOLVER AL MENÚ</a>
-    <a href="{{ route('categories.create') }}" class="btn custom-button">AGREGAR CATEGORÍA</a>
 
-    @if(!isset($results) || count($results) === 0)
-        <a href="{{ route('listacategory.pdf') }}" class="btn custom-button">DESCARGAR PDF</a>
-    @endif
 </div>
 
 @endsection

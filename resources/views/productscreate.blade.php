@@ -172,6 +172,24 @@
             @enderror
         </div>
         <div class="mb-3">
+            <label for="sku" class="form-label">SKU:</label>
+            <input type="text" name="sku" id="sku" class="form-control{{ $errors->has('sku') ? ' is-invalid' : '' }}" value="{{ old('sku') }}">
+            @error('sku')
+            <div class="invalid-feedback" style="color: red;">
+                {{ $message }}
+            </div>
+            @enderror
+        </div>
+        <div class="mb-3">
+            <label for="upc" class="form-label">UPC:</label>
+            <input type="text" name="upc" id="upc" class="form-control{{ $errors->has('upc') ? ' is-invalid' : '' }}" value="{{ old('upc') }}">
+            @error('upc')
+            <div class="invalid-feedback" style="color: red;">
+                {{ $message }}
+            </div>
+            @enderror
+        </div>
+        <div class="mb-3">
             <label for="price" class="form-label">PRECIO:</label>
             <input type="text" name="price" id="price" class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}" value="{{ old('price') }}">
             @error('price')

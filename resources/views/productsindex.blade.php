@@ -35,6 +35,8 @@
                 <th>Descripción</th>
                 <th>Color</th>
                 <th>Tallas</th>
+                <th>Sku</th>
+                <th>Upc</th>
                 <th>Cantidad Surtida</th>
                 <th>Cantidad Vendida</th>
                 <th>Cantidad Total</th>
@@ -50,6 +52,8 @@
                 <td>{{ $product->description }}</td>
                 <td>{{ $product->color }}</td>
                 <td>{{ implode(', ', explode(',', $product->size)) }}</td>
+                <td>{{ $product->sku }}</td>
+                <td>{{ $product->upc }}</td>
                 <td>{{ $product->assor_quant }}</td>
                 <td>{{ $product->sold_quant }}</td>
                 <td>{{ $product->total_quant }}</td>
@@ -86,6 +90,8 @@
                 <th>Descripción</th>
                 <th>Color</th>
                 <th>Tallas</th>
+                <th>Sku</th>
+                <th>Upc</th>
                 <th>Cantidad Surtida</th>
                 <th>Cantidad Vendida</th>
                 <th>Cantidad Total</th>
@@ -101,6 +107,8 @@
                 <td>{{ $product->description }}</td>
                 <td>{{ $product->color }}</td>
                 <td>{{ implode(', ', explode(',', $product->size)) }}</td>
+                <td>{{ $product->sku }}</td>
+                <td>{{ $product->upc }}</td>
                 <td>{{ $product->assor_quant }}</td>
                 <td>{{ $product->sold_quant }}</td>
                 <td>{{ $product->total_quant }}</td>

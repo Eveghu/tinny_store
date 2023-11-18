@@ -15,6 +15,8 @@ return new class extends Migration {
             $table->string('description', 45);
             $table->string('color', 45);
             $table->string('size', 15);
+            $table->string('sku', 8);
+            $table->string('upc', 12);
             $table->integer('assor_quant');
             $table->integer('sold_quant');
             $table->integer('total_quant');

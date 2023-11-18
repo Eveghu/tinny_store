@@ -28,12 +28,17 @@
         <thead>
            <tr>
             <th>Nombre de la Categoría</th>
+            <th>Imagen de la Categoría</th>
+
             </tr> 
         </thead>
         <tbody>
             @foreach ($categories as $category)
                 <tr>
                     <td>{{$category->category_name}}</td>
+                    <td class="text-right">
+                        <img src="{{ public_path('image_category/' . $category->image_category) }}" alt="Category" width="100">
+                    </td>
                 </tr>
             @endforeach
         </tbody>

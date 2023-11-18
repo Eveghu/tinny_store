@@ -37,6 +37,8 @@ class ProductsController extends Controller
             'product_name' => 'required|string|max:30',
             'description' => 'required|string|max:45',
             'color' => 'required|string|max:45',
+            'sku' => 'required|string|max:8',
+            'upc' => 'required|string|max:12',
             'assor_quant' => 'required|integer',
             'sold_quant' => 'required|integer',
             'total_quant' => 'required|integer',
@@ -53,6 +55,8 @@ class ProductsController extends Controller
         $product -> sold_quant = $request -> input('sold_quant');
         $product -> total_quant = $request -> input('total_quant');
         $product -> price = $request -> input('price');
+        $product -> sku = $request -> input('sku');
+        $product -> upc = $request -> input('upc');
         $product->size = implode(',', $request->input('size'));
         $product -> save();
         return redirect()->route('products.index');
@@ -100,6 +104,8 @@ public function update(Request $request, $id)
     $product -> sold_quant = $request -> input('sold_quant');
     $product -> total_quant = $request -> input('total_quant');
     $product -> price = $request -> input('price');
+    $product -> price = $request -> input('sku');
+    $product -> price = $request -> input('upc');
     $product->size = implode(',', $request->input('size')); // Almacena tallas como una cadena
 
     $product -> save();

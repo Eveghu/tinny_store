@@ -27,6 +27,8 @@
         <p class="card-text">DESCRIPCIÓN: {{$product->description}}</p>
         <p class="card-text">COLOR: {{$product->color}}</p>
         <p class="card-text">TALLA: {{$product->size}}</p>
+        <p class="card-text">SKU: {{$product->sku}}</p>
+        <p class="card-text">UPC: {{$product->upc}}</p>
         <p class="card-text">CANTIDAD SURTIDA: {{$product->assor_quant}}</p>
         <p class="card-text">CANTIDAD VENDIDA: {{$product->sold_quant}}</p>
         <p class="card-text">CANTIDAD TOTAL: {{$product->sold_quant}}</p>
