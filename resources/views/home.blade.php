@@ -116,7 +116,14 @@
                     <a href="{{ route('products.index') }}">Ver Productos</a>
                 </div>
             </div>
-
+            <div class="dropdown">
+                <button>TIPOS DE TALLA</button>
+                <div class="dropdown-content box"> <!-- Agregamos la clase "box" para la caja -->
+                    <a href="{{ route('types.create') }}">Agregar Tipo de Talla</a>
+                    <a href="{{ route('types.index') }}">Ver Tipos de Talla</a>
+                </div>
+            </div>
+           
             <div class="dropdown">
                 <button>VENTAS</button>
                 <div class="dropdown-content box"> <!-- Agregamos la clase "box" para la caja -->
