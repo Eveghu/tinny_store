@@ -14,8 +14,13 @@ return new class extends Migration
         Schema::create('sizes', function (Blueprint $table) {
             $table->id();
             $table->string('size_name', 20);
-        
             $table->timestamps();
+            $table->unsignedBigInteger('type_id'); // Cambi
+
+            $table->foreign('type_id') // Cambié el nombre de la clave foránea
+            ->references('id')
+            ->on('types')
+            ->onDelete('cascade');
         });
     }
 

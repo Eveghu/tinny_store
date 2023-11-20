@@ -23,7 +23,7 @@ return new class extends Migration {
             $table->decimal('price', 8, 2);
             $table->timestamps();
             $table->unsignedBigInteger('category_id');
-            $table->unsignedBigInteger('type_id'); // Cambi
+            $table->unsignedBigInteger('type_id'); 
 
             $table->foreign('category_id')
             ->references('id')
@@ -34,6 +34,9 @@ return new class extends Migration {
             ->references('id')
             ->on('types')
             ->onDelete('cascade');
+
+          
+            
         });
     }
 

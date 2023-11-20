@@ -13,7 +13,9 @@ class Products extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'category_id',  // Cambia 'category_name' por 'category_id'
+        'category_id',
+        'type_id',
+        // Cambia 'category_name' por 'category_id'
         'product_name',
         'description',
         'color',
