@@ -26,6 +26,7 @@
         <p class="card-text">CATEGORÍA: {{ $product->category->category_name }}</p>
         <p class="card-text">DESCRIPCIÓN: {{$product->description}}</p>
         <p class="card-text">COLOR: {{$product->color}}</p>
+        <p class="card-text">TIPO DE TALLA: {{ $product->type->type_name }}</p>
         <p class="card-text">TALLA: {{$product->size}}</p>
         <p class="card-text">SKU: {{$product->sku}}</p>
         <p class="card-text">UPC: {{$product->upc}}</p>

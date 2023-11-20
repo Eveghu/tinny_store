@@ -31,6 +31,9 @@ class Products extends Model
     public function sizeIsSelected($sizeToCheck) {
         return $this->size == $sizeToCheck;
     }
-
+    public function type()
+    {
+        return $this->belongsTo(Types::class, 'type_id');
+    }
 }
 

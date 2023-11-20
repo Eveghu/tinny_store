@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Products;
 use App\Models\Categories;
+use App\Models\Types;
+
 use Illuminate\Http\Request;
 use PDF;
 class ProductsController extends Controller
@@ -15,9 +17,11 @@ class ProductsController extends Controller
         if ($query) {
             $results = Products::search($query)->get();
             $products = Products::with('category')->get();
-            return view('productsindex', compact('products', 'results'));
+            $products = Products::with('type')->get();
+            return view('productsindex', compact('products', 'types', 'results'));
         } else {
             $products = Products::with('category')->get();
+            $products = Products::with('type')->get();
             return view('productsindex', compact('products'));
         }
     }
@@ -27,7 +31,8 @@ class ProductsController extends Controller
     {
         $product = new Products(); // Crea una nueva instancia del modelo de Producto o consulta un producto existente desde la base de datos.
         $categories = Categories::all(); // Reemplaza 'Category' con el modelo de tus categorías.
-        return view('productscreate', compact('product', 'categories'));
+        $types = Types::all(); // Reemplaza 'Category' con el modelo de tus categorías.
+        return view('productscreate', compact('product', 'categories', 'types'));
     }
     
 
@@ -48,6 +53,7 @@ class ProductsController extends Controller
         //return $request->all();
         $product = new Products();
         $product->category_id = $request->input('category_id'); // Asigna la categoría
+        $product->type_id = $request->input('type_id'); // Asigna la categoría
         $product -> product_name = $request -> input('product_name');
         $product -> description = $request -> input('description');
         $product -> color = $request -> input('color');
@@ -68,14 +74,13 @@ class ProductsController extends Controller
     return view('productosshow', compact('product'));
 }
 
-    public function edit($id)
+public function edit($id)
 {
-    $categories = Categories::all(); // Asegúrate de obtener las categorías aquí
+    $categories = Categories::all();
+    $types = Types::all(); // Cambié $type a $types
     $product = Products::find($id);
-    return view('editproduct', compact('product', 'categories'));
-
+    return view('editproduct', compact('product', 'categories', 'types')); // Cambié $type a $types
 }
-
 
 
 public function update(Request $request, $id)

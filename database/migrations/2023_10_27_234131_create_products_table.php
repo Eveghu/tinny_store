@@ -23,10 +23,17 @@ return new class extends Migration {
             $table->decimal('price', 8, 2);
             $table->timestamps();
             $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('type_id'); // Cambi
+
             $table->foreign('category_id')
-                ->references('id')
-                ->on('categories')
-                ->onDelete('cascade'); // Esta línea establece la acción "CASCADE" en la eliminación
+            ->references('id')
+            ->on('categories')
+            ->onDelete('cascade');
+            
+        $table->foreign('type_id') // Cambié el nombre de la clave foránea
+            ->references('id')
+            ->on('types')
+            ->onDelete('cascade');
         });
     }
 
