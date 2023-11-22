@@ -151,7 +151,27 @@
             <!-- Agrega más tallas aquí -->
         </div>
     
+        <div class="mb-3">
+            <label for="sku" class="form-label">SKU:</label>
+            <input type="text" name="sku" value="{{ $product->sku }}" class="form-control{{ $errors->has('sku') ? ' is-invalid' : '' }}">            
+            @error('sku')
+                <div class="invalid-feedback" style="color: red;">
+                    {{ $message }}
+                </div>
+            @enderror
+            
+        </div>
 
+        <div class="mb-3">
+            <label for="upc" class="form-label">UPC:</label>
+            <input type="text" name="upc" value="{{ $product->upc }}" class="form-control{{ $errors->has('upc') ? ' is-invalid' : '' }}">            
+            @error('upc')
+                <div class="invalid-feedback" style="color: red;">
+                    {{ $message }}
+                </div>
+            @enderror
+            
+        </div>
 
         </div>
         <div class="mb-3">

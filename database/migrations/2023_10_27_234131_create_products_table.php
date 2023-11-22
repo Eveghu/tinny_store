@@ -24,18 +24,23 @@ return new class extends Migration {
             $table->timestamps();
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('type_id'); 
+            $table->unsignedBigInteger('size_id'); 
 
             $table->foreign('category_id')
             ->references('id')
             ->on('categories')
             ->onDelete('cascade');
             
-        $table->foreign('type_id') // Cambié el nombre de la clave foránea
+        $table->foreign('type_id') 
             ->references('id')
             ->on('types')
             ->onDelete('cascade');
-
-          
+    
+            $table->foreign('size_id') 
+            ->references('id')
+            ->on('sizes')
+            ->onDelete('cascade');
+           
             
         });
     }

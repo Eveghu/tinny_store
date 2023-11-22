@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Products;
 use App\Models\Categories;
 use App\Models\Types;
+use App\Models\Sizes;
 
 use Illuminate\Http\Request;
 use PDF;
@@ -18,7 +19,7 @@ class ProductsController extends Controller
             $results = Products::search($query)->get();
             $products = Products::with('category')->get();
             $products = Products::with('type')->get();
-            return view('productsindex', compact('products', 'types', 'results'));
+            return view('productsindex', compact('products', 'results'));
         } else {
             $products = Products::with('category')->get();
             $products = Products::with('type')->get();

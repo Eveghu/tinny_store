@@ -31,16 +31,14 @@
         <thead>
             <tr>
                 <th>Categoría</th>
-                <th>Nombre del Proucto</th>
+                <th> Producto</th>
                 <th>Descripción</th>
-                <th>Color</th>
                 <th>Tallas</th>
                 <th>Sku</th>
                 <th>Upc</th>
                 <th>Cantidad Surtida</th>
                 <th>Cantidad Vendida</th>
                 <th>Cantidad Total</th>
-                <th>Precio</th>
                 <th>Opciones</th>
             </tr>
         </thead>
@@ -50,14 +48,19 @@
                 <td>{{ $product->category->category_name }}</td>
                 <td>{{ $product->product_name }}</td>
                 <td>{{ $product->description }}</td>
-                <td>{{ $product->color }}</td>
                 <td>{{ implode(', ', explode(',', $product->size)) }}</td>
                 <td>{{ $product->sku }}</td>
                 <td>{{ $product->upc }}</td>
                 <td>{{ $product->assor_quant }}</td>
                 <td>{{ $product->sold_quant }}</td>
                 <td>{{ $product->total_quant }}</td>
-                <td>{{ $product->price }}</td>
+                <td>
+                    @if ($product->total_quant < 3)
+                    <span class="badge bg-danger"> </span>
+                    @elseif ($product->total_quant > 3)
+                        <span class="badge bg-success"> </span>
+                                            @endif
+                </td>
                 <td>
     <div class="d-flex">
     <a href="/products/{{$product->id}}/editproduct" class="btn custom-button">EDITAR</a>
@@ -86,16 +89,15 @@
         <thead>
             <tr>
                 <th>Categoría</th>
-                <th>Nombre del Proucto</th>
+                <th>Producto</th>
                 <th>Descripción</th>
-                <th>Color</th>
                 <th>Tallas</th>
                 <th>Sku</th>
                 <th>Upc</th>
                 <th>Cantidad Surtida</th>
                 <th>Cantidad Vendida</th>
                 <th>Cantidad Total</th>
-                <th>Precio</th>
+                <th>Surtir</th>
                 <th>Opciones</th>
             </tr>
         </thead>
@@ -105,15 +107,19 @@
                 <td>{{ $product->category->category_name }}</td>
                 <td>{{ $product->product_name }}</td>
                 <td>{{ $product->description }}</td>
-                <td>{{ $product->color }}</td>
                 <td>{{ implode(', ', explode(',', $product->size)) }}</td>
                 <td>{{ $product->sku }}</td>
                 <td>{{ $product->upc }}</td>
                 <td>{{ $product->assor_quant }}</td>
                 <td>{{ $product->sold_quant }}</td>
                 <td>{{ $product->total_quant }}</td>
-                <td>{{ $product->price }}</td>
-
+                <td>
+                    @if ($product->total_quant < 3)
+                    <span class="badge bg-danger"> </span>
+                    @elseif ($product->total_quant > 3)
+                        <span class="badge bg-success"> </span>
+                                            @endif
+                </td>
 
                 <td>
                     <div class="d-flex">
