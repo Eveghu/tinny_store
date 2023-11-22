@@ -143,6 +143,12 @@ public function update(Request $request, $id)
             $pdf = PDF::loadview('pdf.listadoproducts', compact('products'));
             return $pdf->download('listadoproducts.pdf');
         }
+        public function PDF1()
+        {
+            $products = products::all();
+            $pdf = PDF::loadview('pdf.listadosurtir', compact('products'));
+            return $pdf->download('listadosurtir.pdf');
+        }
     
     
 }

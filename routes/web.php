@@ -55,6 +55,7 @@ Route::post('sizes/delete/{id}',[SizesController::class, 'destroy']);
 Route::get('pdf1', [CategoriesController::class, 'pdf'])->name('listacategory.pdf');
 Route::get('pdf2', [SellsController::class, 'pdf'])->name('listasell.pdf');
 Route::get('pdf3', [ProductsController::class, 'pdf'])->name('listaproduct.pdf');
+Route::get('pdf4', [ProductsController::class, 'pdf1'])->name('listasurtir.pdf');
 
 
 Route::get('/searchcategory', [CategoriesController::class, 'index'])->name('searchcategory');

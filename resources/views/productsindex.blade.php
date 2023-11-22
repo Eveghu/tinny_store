@@ -39,6 +39,7 @@
                 <th>Cantidad Surtida</th>
                 <th>Cantidad Vendida</th>
                 <th>Cantidad Total</th>
+                <th>Surtir</th>
                 <th>Opciones</th>
             </tr>
         </thead>
@@ -145,7 +146,9 @@
 
     {{-- Verificar si hay resultados de búsqueda para mostrar o no el botón de descarga de PDF --}}
     @if(!isset($results) || count($results) === 0)
-        <a href="{{ route('listaproduct.pdf') }}" class="btn custom-button">DESCARGAR PDF</a>
+        <a href="{{ route('listaproduct.pdf') }}" class="btn custom-button">DESCARGAR PDF PRODUCTOS</a>
+        <a href="{{ route('listasurtir.pdf') }}" class="btn custom-button">DESCARGAR PDF PRODUCTOS A SURTIR</a>
+
     @endif
 </div>
 @endsection
