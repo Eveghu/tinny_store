@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\SellsController;
 use App\Http\Controllers\TypesController;
+use App\Http\Controllers\SizesController;
 
 
 
@@ -36,15 +37,19 @@ Route::post('sells/create', [App\Http\Controllers\SellsController::class, 'creat
 Route::resource('sells', SellsController::class);
 Route::post('types/create', [App\Http\Controllers\TypesController::class, 'create']);
 Route::resource('types', TypesController::class);
+Route::post('sizes/create', [App\Http\Controllers\SizesController::class, 'create']);
+Route::resource('sizes', SizesController::class);
 
 Route::get('/categories/{id}/editcategory', [CategoriesController::class, 'edit'])->name('categories.edit');
 Route::get('/products/{id}/editproduct', [ProductsController::class, 'edit'])->name('products.edit');
 Route::get('/types/{id}/edittype', [TypesController::class, 'edit'])->name('type.edit');
+Route::get('/sizes/{id}/editsize', [SizesController::class, 'edit'])->name('size.edit');
 
 
 Route::post('categories/delete/{id}',[CategoriesController::class, 'destroy']);
 Route::post('products/delete/{id}',[ProductsController::class, 'destroy']);
 Route::post('types/delete/{id}',[TypesController::class, 'destroy']);
+Route::post('sizes/delete/{id}',[SizesController::class, 'destroy']);
 
 
 Route::get('pdf1', [CategoriesController::class, 'pdf'])->name('listacategory.pdf');

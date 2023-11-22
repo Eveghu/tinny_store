@@ -9,9 +9,11 @@ class Sizes extends Model
 {
     use HasFactory;
     protected $primaryKey = 'id';
+    protected $fillable = [
+        'type_id',
+        // Cambia 'category_name' por 'category_id'
+        'size_name',
+      
+    ];
 
-    public function type()
-    {
-        return $this->belongsTo(Types::class, 'type_id');
-    }
 }
