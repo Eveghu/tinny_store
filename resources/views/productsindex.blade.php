@@ -6,9 +6,8 @@
 <div class="container">
     <h1>PRODUCTOS</h1>
     <style>
-      .custom-button {
-        font-size: 14px; /* Reduce el tamaño de la fuente */
-        background-color: #e7d8df; /* Cambia el color de fondo a tu elección */
+     .custom-button {
+        background-color: #ff8bb4; /* Cambia el color de fondo a tu elección */
         color: #fff; /* Cambia el color del texto a blanco */
         border: none;
         padding: 5px 10px; /* Añade un espacio interno al botón */
@@ -17,9 +16,35 @@
     
         /* Estilo al pasar el mouse por encima (hover) */
         &:hover {
-            background-color: #ff8bb4; /* Cambia el color de fondo al pasar el mouse */
+            background-color: #e7d8df; /* Cambia el color de fondo al pasar el mouse */
         }
     }
+        .custom-delete {
+          font-size: 14px; /* Reduce el tamaño de la fuente */
+          background-color: rgb(218, 80, 92); /* Cambia el color de fondo a tu elección */
+          color: #fff; /* Cambia el color del texto a blanco */
+          border: none;
+          padding: 5px 10px; /* Añade un espacio interno al botón */
+          border-radius: 5px; /* Añade bordes redondeados */
+          transition: background-color 0.3s; /* Agrega una transición al color de fondo */
+        }
+        .custom-edit {
+            font-size: 14px; /* Reduce el tamaño de la fuente */
+        background-color: rgb(90, 163, 118); /* Cambia el color de fondo a tu elección */
+        color: #fff; /* Cambia el color del texto a blanco */
+        border: none;
+        padding: 5px 10px; /* Añade un espacio interno al botón */
+        border-radius: 5px; /* Añade bordes redondeados */
+        transition: background-color 0.3s; /* Agrega una transición al color de fondo */
+    
+        /* Estilo al pasar el mouse por encima (hover) */
+        &:hover {
+            background-color: #e7d8df; /* Cambia el color de fondo al pasar el mouse */
+        }
+        }
+      
+        
+
     </style>
     <form action="{{ route('searchproduct') }}" method="GET" class="d-flex" role="search">
         <input type="search" name="query" placeholder="Buscar..." class="form-control me-2" >
@@ -64,12 +89,12 @@
                 </td>
                 <td>
     <div class="d-flex">
-    <a href="/products/{{$product->id}}/editproduct" class="btn custom-button">EDITAR</a>
-    <a href="/products/{{ $product->id }}" class="btn custom-button">DETALLES</a>
+        <a href="/products/{{$product->id}}/editproduct" class="btn custom-edit">EDITAR</a>
+        <a href="/products/{{ $product->id }}" class="btn custom-button">DETALLES</a>
     <form method="POST" action="{{ route('products.destroy', $product->id) }}">
         @csrf
         @method('DELETE')
-        <button type="submit" class="btn btn-danger" onclick="return confirm('Seguro que quieres eliminar este producto?')">ELIMINAR</button>
+        <button type="submit" class="btn custom-delete" onclick="return confirm('Seguro que quieres eliminar este producto?')">ELIMINAR</button>
     </form>
 </div>
 
@@ -117,19 +142,21 @@
                 <td>
                     @if ($product->total_quant < 3)
                     <span class="badge bg-danger"> </span>
-                    @elseif ($product->total_quant > 3)
-                        <span class="badge bg-success"> </span>
+                    @elseif ($product->total_quant > 2)
+                        <span class="badge bg-success"> 
+                            
+                        </span>
                                             @endif
                 </td>
 
                 <td>
                     <div class="d-flex">
-    <a href="/products/{{$product->id}}/editproduct" class="btn custom-button">EDITAR</a>
-    <a href="/products/{{ $product->id }}" class="btn custom-button">DETALLES</a>
+                        <a href="/products/{{$product->id}}/editproduct" class="btn custom-edit">EDITAR</a>
+                        <a href="/products/{{ $product->id }}" class="btn custom-button">DETALLES</a>
     <form method="POST" action="{{ route('products.destroy', $product->id) }}">
         @csrf
         @method('DELETE')
-        <button type="submit" class="btn btn-danger" onclick="return confirm('Seguro que quieres eliminar este producto?')">ELIMINAR</button>
+        <button type="submit" class="btn custom-delete" onclick="return confirm('Seguro que quieres eliminar este producto?')">ELIMINAR</button>
     </form>
 </div>
 

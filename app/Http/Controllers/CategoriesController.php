@@ -62,7 +62,7 @@ public function edit($id)
 public function update(Request $request, $id)
 {
     $request->validate([
-        'category_name' => 'required|string|max:20', // category_name es requerido y tiene un máximo de 20 caracteres
+        'category_name' => 'required|string|max:20', 
         'image_category' => 'required|image|mimes:jpeg,jpg,gif,svg,png|max:1048',    
 
     ]);

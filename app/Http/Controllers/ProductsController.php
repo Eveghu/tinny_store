@@ -43,11 +43,11 @@ class ProductsController extends Controller
             'product_name' => 'required|string|max:30',
             'description' => 'required|string|max:45',
             'color' => 'required|string|max:45',
-            'sku' => 'required|string|max:8',
-            'upc' => 'required|string|max:12',
             'assor_quant' => 'required|integer',
             'sold_quant' => 'required|integer',
             'total_quant' => 'required|integer',
+            'sku' => 'required|string|max:8',
+            'upc' => 'required|string|max:12',
             'price' => 'required|numeric|between:0.01,999999.99', // Numeric value with 2 decimal places.
         ]);
         
@@ -78,9 +78,9 @@ class ProductsController extends Controller
 public function edit($id)
 {
     $categories = Categories::all();
-    $types = Types::all(); // Cambié $type a $types
+    $types = Types::all(); 
     $product = Products::find($id);
-    return view('editproduct', compact('product', 'categories', 'types')); // Cambié $type a $types
+    return view('editproduct', compact('product', 'categories', 'types')); 
 }
 
 
@@ -93,6 +93,8 @@ public function update(Request $request, $id)
         'assor_quant' => 'required|integer',
         'sold_quant' => 'required|integer',
         'total_quant' => 'required|integer',
+        'sku' => 'required|string|max:8',
+        'upc' => 'required|string|max:12',
         'price' => 'required|numeric|between:0.01,999999.99', // Numeric value with 2 decimal places.
     ]);
     
@@ -110,8 +112,8 @@ public function update(Request $request, $id)
     $product -> sold_quant = $request -> input('sold_quant');
     $product -> total_quant = $request -> input('total_quant');
     $product -> price = $request -> input('price');
-    $product -> price = $request -> input('sku');
-    $product -> price = $request -> input('upc');
+    $product -> sku = $request -> input('sku');
+    $product -> upc = $request -> input('upc');
     $product->size = implode(',', $request->input('size')); // Almacena tallas como una cadena
 
     $product -> save();

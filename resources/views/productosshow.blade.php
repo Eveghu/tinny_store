@@ -7,7 +7,25 @@
     <style>
         .custom-button {
           font-size: 14px; /* Reduce el tamaño de la fuente */
-          background-color: #e7d8df; /* Cambia el color de fondo a tu elección */
+          background-color: #ff8bb4; /* Cambia el color de fondo a tu elección */
+          color: #fff; /* Cambia el color del texto a blanco */
+          border: none;
+          padding: 5px 10px; /* Añade un espacio interno al botón */
+          border-radius: 5px; /* Añade bordes redondeados */
+          transition: background-color 0.3s; /* Agrega una transición al color de fondo */
+        }
+        .custom-delete {
+          font-size: 14px; /* Reduce el tamaño de la fuente */
+          background-color: rgb(218, 80, 92); /* Cambia el color de fondo a tu elección */
+          color: #fff; /* Cambia el color del texto a blanco */
+          border: none;
+          padding: 5px 10px; /* Añade un espacio interno al botón */
+          border-radius: 5px; /* Añade bordes redondeados */
+          transition: background-color 0.3s; /* Agrega una transición al color de fondo */
+        }
+        .custom-edit {
+          font-size: 14px; /* Reduce el tamaño de la fuente */
+          background-color: rgb(90, 163, 118); /* Cambia el color de fondo a tu elección */
           color: #fff; /* Cambia el color del texto a blanco */
           border: none;
           padding: 5px 10px; /* Añade un espacio interno al botón */
@@ -17,7 +35,7 @@
       
         /* Estilo al pasar el mouse por encima (hover) */
         .custom-button:hover {
-          background-color: #ff8bb4; /* Cambia el color de fondo al pasar el mouse */
+          background-color: #e7d8df; /* Cambia el color de fondo al pasar el mouse */
         }
       </style>
     <div class="card-body">
@@ -36,9 +54,9 @@
         <p class="card-text">PRECIO ${{$product->price}}</p>
         <form method="POST" action="{{ url('products/delete', ['id' => $product->id]) }}">
           @csrf
-            <button type="submit" class="btn custom-button">ELIMINAR</button>
+            <button type="submit" class="btn custom-delete">ELIMINAR</button>
         </form>
-       <a href="/products/{{$product->id}}/editproduct" class="btn custom-button">EDITAR</a>
+       <a href="/products/{{$product->id}}/editproduct" class="btn custom-edit">EDITAR</a>
     </div>
 </div>
 <div style="margin-top: 0px; width: 18rem; margin: 70px auto;">
