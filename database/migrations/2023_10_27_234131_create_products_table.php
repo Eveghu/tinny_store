@@ -15,13 +15,13 @@ return new class extends Migration {
             $table->string('description', 45);
             $table->string('color', 45);
             $table->string('size', 15);
-            $table->string('sku', 8)->nullable();
-            $table->string('upc', 12)->nullable();
+            $table->string('sku', 8);
+            $table->string('upc', 12);
             
             $table->integer('assor_quant');
             $table->integer('sold_quant');
             $table->integer('total_quant');
-            $table->decimal('price', 10, 3);
+            $table->decimal('price', 8, 2);
             $table->timestamps();
             $table->unsignedBigInteger('category_id');
             $table->unsignedBigInteger('type_id'); 
