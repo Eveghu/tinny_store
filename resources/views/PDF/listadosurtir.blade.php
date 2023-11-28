@@ -56,7 +56,7 @@
             <td>{{ $product->assor_quant }}</td>
             <td>{{ $product->sold_quant }}</td>
             <td>{{ $product->total_quant }}</td>
-            <td>{{ $product->price }}</td>
+            <td>${{ $product->price }}</td>
             @php
                 $totalCost += $product->assor_quant * $product->price; 
             @endphp

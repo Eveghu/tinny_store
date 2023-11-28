@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Products;
 use App\Models\Categories;
-use App\Models\Types;
-use App\Models\Sizes;
+
 
 use Illuminate\Http\Request;
 use PDF;
@@ -18,11 +17,9 @@ class ProductsController extends Controller
         if ($query) {
             $results = Products::search($query)->get();
             $products = Products::with('category')->get();
-            $products = Products::with('type')->get();
             return view('productsindex', compact('products', 'results'));
         } else {
             $products = Products::with('category')->get();
-            $products = Products::with('type')->get();
             return view('productsindex', compact('products'));
         }
     }
@@ -32,8 +29,7 @@ class ProductsController extends Controller
     {
         $product = new Products(); // Crea una nueva instancia del modelo de Producto o consulta un producto existente desde la base de datos.
         $categories = Categories::all(); // Reemplaza 'Category' con el modelo de tus categorías.
-        $types = Types::all(); // Reemplaza 'Category' con el modelo de tus categorías.
-        return view('productscreate', compact('product', 'categories', 'types'));
+        return view('productscreate', compact('product', 'categories'));
     }
     
 
@@ -54,7 +50,6 @@ class ProductsController extends Controller
         //return $request->all();
         $product = new Products();
         $product->category_id = $request->input('category_id'); // Asigna la categoría
-        $product->type_id = $request->input('type_id'); // Asigna la categoría
         $product -> product_name = $request -> input('product_name');
         $product -> description = $request -> input('description');
         $product -> color = $request -> input('color');
@@ -78,9 +73,8 @@ class ProductsController extends Controller
 public function edit($id)
 {
     $categories = Categories::all();
-    $types = Types::all(); 
     $product = Products::find($id);
-    return view('editproduct', compact('product', 'categories', 'types')); 
+    return view('editproduct', compact('product', 'categories')); 
 }
 
 
@@ -114,15 +108,13 @@ public function update(Request $request, $id)
     $product -> price = $request -> input('price');
     $product -> sku = $request -> input('sku');
     $product -> upc = $request -> input('upc');
-    $product->size = implode(',', $request->input('size')); // Almacena tallas como una cadena
-
+    $product->size = implode(',', $request->input('size')); 
     $product -> save();
 
     return redirect()->route('products.index')->with('success', 'Product updated successfully');
 }
 
 
-    // ...
 
 
     public function destroy($id)

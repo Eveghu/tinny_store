@@ -24,7 +24,7 @@
             <div class="mb-3">
                 {{ Form::label('image_category', 'IMAGEN DE LA CATEGORÍA:', ['class' => 'form-label']) }}
                 @if(isset($category) && $category->image_category)
-                    <img src="{{ asset('image_category/' . $category->image_category) }}" alt="Imagen de la categoría" style="max-width: 100px; max-height: 100px;">
+                    <img src="{{ asset('image_category/' . $category->image_category) }}" alt="Imagen de la categoría" style="max-width: 200px; max-height: 200px; margin-bottom: 20px;">
                 @endif
                 {{ Form::file('image_category', ['class' => 'form-control' . ($errors->has('image_category') ? ' is-invalid' : '')]) }}
                 @error('image_category')

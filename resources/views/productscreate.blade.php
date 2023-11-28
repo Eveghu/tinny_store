@@ -66,16 +66,6 @@
             </div>
             @enderror
         </div>
-        <div class="mb-3">
-            <label for="type_id">TIPO DE TALLA:</label>
-            <select name="type_id" id="type_id" class="form-control">
-                <option value="">Selecciona un tipo de talla</option>
-
-                @foreach ($types as $type)
-                    <option value="{{ $type->id }}">{{ $type->type_name }}</option>
-                @endforeach
-            </select>
-        </div>
 
        <!-- Agrega esta sección en tu formulario de creación y edición -->
 <div class="mb-3">
