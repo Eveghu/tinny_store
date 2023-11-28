@@ -63,7 +63,6 @@ public function update(Request $request, $id)
 {
     $request->validate([
         'category_name' => 'required|string|max:20', 
-        'image_category' => 'required|image|mimes:jpeg,jpg,gif,svg,png|max:1048',    
 
     ]);
 
@@ -72,6 +71,7 @@ public function update(Request $request, $id)
     if (!$category) {
         return redirect()->route('categories.index')->with('error', 'Category not found');
     }
+    $category -> category_name = $request -> input('category_name');
 
     if ($request->hasFile('image_category')) {
         // Eliminar la imagen anterior si existe
@@ -85,7 +85,7 @@ public function update(Request $request, $id)
         $imageName = time() . '.' . $request->image_category->extension();
         $request->image_category->move(public_path('image_category'), $imageName);
 
-        $category->image_category = $imageName; // Guardar el nombre de la nueva imagen en el modelo
+        $category->image_category = $imageName; 
     }
     $category->save();
 

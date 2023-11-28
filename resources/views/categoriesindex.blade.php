@@ -6,8 +6,7 @@
 <div class="container">
     <h1>CATEGORÍAS</h1>
     <style>
-      .custom-button {
-        font-size: 14px; /* Reduce el tamaño de la fuente */
+   .custom-button {
         background-color: #ff8bb4; /* Cambia el color de fondo a tu elección */
         color: #fff; /* Cambia el color del texto a blanco */
         border: none;
@@ -20,6 +19,29 @@
             background-color: #e7d8df; /* Cambia el color de fondo al pasar el mouse */
         }
     }
+        .custom-delete {
+          font-size: 14px; /* Reduce el tamaño de la fuente */
+          background-color: rgb(218, 80, 92); /* Cambia el color de fondo a tu elección */
+          color: #fff; /* Cambia el color del texto a blanco */
+          border: none;
+          padding: 5px 10px; /* Añade un espacio interno al botón */
+          border-radius: 5px; /* Añade bordes redondeados */
+          transition: background-color 0.3s; /* Agrega una transición al color de fondo */
+        }
+        .custom-edit {
+            font-size: 14px; /* Reduce el tamaño de la fuente */
+        background-color: rgb(90, 163, 118); /* Cambia el color de fondo a tu elección */
+        color: #fff; /* Cambia el color del texto a blanco */
+        border: none;
+        padding: 5px 10px; /* Añade un espacio interno al botón */
+        border-radius: 5px; /* Añade bordes redondeados */
+        transition: background-color 0.3s; /* Agrega una transición al color de fondo */
+    
+        /* Estilo al pasar el mouse por encima (hover) */
+        &:hover {
+            background-color: #e7d8df; /* Cambia el color de fondo al pasar el mouse */
+        }
+        }
     </style>
     <form action="{{ route('searchcategory') }}" method="GET" class="d-flex" role="search">
         <input type="search" name="query" placeholder="Buscar..." class="form-control me-2" >
@@ -35,7 +57,7 @@
             <div class="card-body">
                 <h6 class="card-subtitle mb-2 text-muted">{{ $category->category_name }}</h6>
                 <div class="d-flex justify-content-around">
-                    <a href="/categories/{{$category->id}}/editcategory" class="custom-button">EDITAR</a>
+                    <a href="/categories/{{$category->id}}/editcategory" class="custom-edit">EDITAR</a>
                     <form method="POST" action="{{ route('categories.destroy', $category->id) }}">
                         @csrf
                         @method('DELETE')
@@ -66,7 +88,7 @@
                     <div class="card-body">
                         <h6 class="card-subtitle mb-2 text-muted">{{ $category->category_name }}</h6>
                         <div class="d-flex justify-content-around">
-                            <a href="/categories/{{$category->id}}/editcategory" class="custom-button">EDITAR</a>
+                            <a href="/categories/{{$category->id}}/editcategory" class="custom-edit">EDITAR</a>
                             <form method="POST" action="{{ route('categories.destroy', $category->id) }}">
                                 @csrf
                                 @method('DELETE')

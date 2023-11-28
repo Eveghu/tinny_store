@@ -13,28 +13,30 @@
             @csrf
 
             <div class="mb-3">
-                <label for="category_name" class="form-label">NOMBRE DE LA CATEGORÍA:</label>
-                <input type="text" name="category_name" value="{{ $category->category_name }}" class="form-control{{ $errors->has('category_name') ? ' is-invalid' : '' }}">
-                <div class="mb-3">
-                    {{ Form::label('image_category', 'IMAGEN DE LA CATEGORÍA:', ['class' => 'form-label']) }}
-                    {{ Form::file('image_category', ['class' => 'form-control' . ($errors->has('image_category') ? ' is-invalid' : '')]) }}
-                
-                </div>
+                {{ Form::label('category_name', 'NOMBRE DE LA CATEGORÍA:', ['class' => 'form-label']) }}
+                {!! Form::text('category_name', $category->category_name ?? old('category_name'), ['class' => 'form-control'.($errors->has('category_name') ? ' is-invalid' : '')]) !!}
                 @error('category_name')
                     <div class="invalid-feedback" style="color: red;">
                         {{ $message }}
                     </div>
-
-                       
-                    
+                @enderror
+            </div>
+            <div class="mb-3">
+                {{ Form::label('image_category', 'IMAGEN DE LA CATEGORÍA:', ['class' => 'form-label']) }}
+                @if(isset($category) && $category->image_category)
+                    <img src="{{ asset('image_category/' . $category->image_category) }}" alt="Imagen de la categoría" style="max-width: 100px; max-height: 100px;">
+                @endif
+                {{ Form::file('image_category', ['class' => 'form-control' . ($errors->has('image_category') ? ' is-invalid' : '')]) }}
+                @error('image_category')
+                    <div class="invalid-feedback" style="color: red;">
+                        {{ $message }}
                     </div>
+                @enderror
+            </div>
             
-    @enderror
-</div>
                 
             </div>
 
-            <!-- Agrega otros campos para la edición de la categoría aquí -->
 
             <div class="text-center">
                 <button type="submit" class="btn custom-button">GUARDAR</button>

@@ -58,7 +58,7 @@
             <td>{{ $product->total_quant }}</td>
             <td>{{ $product->price }}</td>
             @php
-                $totalCost += $product->assor_quant * $product->price; // Update the total cost variable
+                $totalCost += $product->assor_quant * $product->price; 
             @endphp
         </tr>
         @endif
@@ -66,6 +66,6 @@
     </tbody>
 </table>
 
-<p>TOTAL: $ {{ $totalCost }}</p> <!-- Display the total cost outside the table -->
+<p>TOTAL: $ {{ $totalCost }}</p> 
 
 @endsection
