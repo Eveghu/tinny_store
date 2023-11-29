@@ -44,12 +44,12 @@ class ProductsController extends Controller
             'total_quant' => 'required|integer',
             'sku' => 'required|string|max:8',
             'upc' => 'required|string|max:12',
-            'price' => 'required|numeric|between:0.01,999999.99', // Numeric value with 2 decimal places.
+            'price' => 'required|numeric|between:0.01,999999.99', 
         ]);
         
         //return $request->all();
         $product = new Products();
-        $product->category_id = $request->input('category_id'); // Asigna la categoría
+        $product->category_id = $request->input('category_id'); 
         $product -> product_name = $request -> input('product_name');
         $product -> description = $request -> input('description');
         $product -> color = $request -> input('color');
@@ -89,7 +89,7 @@ public function update(Request $request, $id)
         'total_quant' => 'required|integer',
         'sku' => 'required|string|max:8',
         'upc' => 'required|string|max:12',
-        'price' => 'required|numeric|between:0.01,999999.99', // Numeric value with 2 decimal places.
+        'price' => 'required|numeric|between:0.01,999999.99', 
     ]);
     
 
