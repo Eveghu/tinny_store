@@ -31,10 +31,17 @@ class SellsController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $messages = [
+            'amount.required' => 'La cantidad es obligatoria y deben ser números enteros.',
+            'date.required' => 'La fecha es obligatoria.',
+        ];
+        
+        $this->validate($request, [
             'amount' => 'required|integer',
             'date' => 'required|string|max:45',
-        ]);
+            
+
+        ], $messages); 
         
         //return $request->all();
         $sell = new Sells();

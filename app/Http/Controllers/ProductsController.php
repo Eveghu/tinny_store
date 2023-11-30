@@ -35,7 +35,19 @@ class ProductsController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $messages = [
+            'product_name.required' => 'El nombre del producto es obligatorio y deben ser máximo 30 caracteres.',
+            'description.required' => 'La descripción es obligatorio y deben ser máximo 45 caracteres.',
+            'color.required' => 'El color es obligatorio y deben ser máximo 45 caracteres.',
+            'assor_quant.required' => 'La cantidad surtida es obligatoria y deben ser números enteros.',
+            'sold_quant.required' => 'La cantidad vendida es obligatoria y deben ser  números enteros.',
+            'total_quant.required' => 'La cantidad total es obligatoria y deben ser  números enteros.',
+            'sku.required' => 'El sku es obligatorio y deben ser máximo 8 caracteres.',
+            'upc.required' => 'El upc es obligatorio y deben ser máximo 12 caracteres.',
+            'price.required' => 'El precio es obligatorio y deben ser dos decimales después del punto.',
+        ];
+        
+        $this->validate($request, [
             'product_name' => 'required|string|max:30',
             'description' => 'required|string|max:45',
             'color' => 'required|string|max:45',
@@ -45,8 +57,10 @@ class ProductsController extends Controller
             'sku' => 'required|string|max:8',
             'upc' => 'required|string|max:12',
             'price' => 'required|numeric|between:0.01,999999.99', 
-        ]);
+
+        ], $messages); 
         
+     
         //return $request->all();
         $product = new Products();
         $product->category_id = $request->input('category_id'); 

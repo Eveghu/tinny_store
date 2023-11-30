@@ -28,14 +28,18 @@ class CategoriesController extends Controller
 
     public function store(Request $request)
     {
+        $messages = [
+            'category_name.required' => 'El nombre de la categoría es obligatorio y deben ser 20 caracteres.',
+            'image_category.required' => 'La imagen de la categoría es obligatoria.',
+            'image_category.image' => 'La imagen debe ser un archivo de imagen.',            
+        ];
         
-    $request->validate([
-        'category_name' => 'required|string|max:20', // category_name es requerido y tiene un máximo de 20 caracteres
-        'image_category' => 'required|image|mimes:jpeg,jpg,gif,svg|max:1048',    
-    ]);
+        $this->validate($request, [
+            'category_name' => 'required|string|max:20',
+            'image_category' => 'required|image|mimes:jpeg,jpg,gif,svg|max:1048',    
     
-    // Aquí continúa tu lógica para guardar el registro en la base de datos
-
+        ], $messages); 
+        
 
         //return $request->all();
         $category = new Categories();
