@@ -70,8 +70,8 @@
         <form>
             <label for="size">SELECCIONA EL TIPO DE TALLA:</label>
     
-                <div class="row">
-                    <div class="col-2">
+            <div class="row">
+                <div class="col-2">
                         <div class="form-check">
                             <input type="checkbox" name="size[]" class="form-check-input" value="CH" id="size">
                             <label class="form-check-label" for="size">CH</label>
@@ -102,7 +102,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
                 <div class="row ">
                     <div class="col-2">
                         <div class="form-check">
@@ -140,9 +139,7 @@
                             <label class="form-check-label" for="size">11</label>
                         </div>
                     </div>
-                </div>
-            </div>
-        
+                </div>        
         
               <div class="mb-3">
             <label for="assor_quant" class="form-label">CANTIDAD SURTIDA:</label>
