@@ -149,13 +149,13 @@ public function update(Request $request, $id)
         public function PDF()
         {
             $products = products::all();
-            $pdf = PDF::loadview('pdf.listadoproducts', compact('products'));
+            $pdf = PDF::loadview('PDF.listadoproducts', compact('products'));
             return $pdf->download('listadoproducts.pdf');
         }
         public function PDF1()
         {
             $products = products::all();
-            $pdf = PDF::loadview('pdf.listadosurtir', compact('products'));
+            $pdf = PDF::loadview('PDF.listadosurtir', compact('products'));
             return $pdf->stream('listadosurtir.pdf');
         }
     

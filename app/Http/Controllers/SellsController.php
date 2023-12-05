@@ -60,7 +60,7 @@ public function show(Sells $sell)
         public function PDF()
         {
             $sells = sells::all();
-            $pdf = PDF::loadview('pdf.listadosells', compact('sells'));
+            $pdf = PDF::loadview('PDF.listadosells', compact('sells'));
             return $pdf->stream('listadosells.pdf');
         }
 }
