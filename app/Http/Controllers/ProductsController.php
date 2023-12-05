@@ -74,7 +74,8 @@ class ProductsController extends Controller
         $product -> sku = $request -> input('sku');
         $product -> upc = $request -> input('upc');
         $product->size = implode(',', $request->input('size'));
-        $product -> save();
+
+              $product -> save();
         return redirect()->route('products.index');
     }
 

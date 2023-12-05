@@ -82,10 +82,12 @@
             <div class="row mt-4">
                 @foreach ($categories as $category)
                 <div class="card" style="margin-top: 20px; margin-right: 20px; width: 200px;">
-                    <img style="height: 100px; width: 100px; background-color: #EFEFEF; margin: 20px;"
-                        class="card-img-top rounded-circle mx-auto d-block"
-                        src="/image_category/{{ $category->image_category }}" alt="">
-                    <div class="card-body">
+                        <div class="card-body">
+                            @if($category->image_category)
+                                        <img style="height: 100px; width: 100px; background-color: #EFEFEF; margin: 20px;"
+                                            class="card-img-top rounded-circle mx-auto d-block"
+                                            src="{{ asset('image_category/'.$category->image_category) }}" alt="">
+                                        @endif
                         <h6 class="card-subtitle mb-2 text-muted">{{ $category->category_name }}</h6>
                         <div class="d-flex justify-content-around">
                             <a href="/categories/{{$category->id}}/editcategory" class="custom-edit">EDITAR</a>
