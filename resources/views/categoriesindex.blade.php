@@ -92,7 +92,6 @@
                                 @else
                                     <p>La imagen no está disponible.</p>
                                 @endif
-                            @endif
             <div style="margin-top: 20px; margin-left: 300px;">
                 <a href="{{ route('home') }}" class="btn custom-button">VOLVER AL MENÚ</a>
                 <a href="{{ route('categories.create') }}" class="btn custom-button">AGREGAR CATEGORÍA</a>
