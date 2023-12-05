@@ -92,25 +92,19 @@
                                 @else
                                     <p>La imagen no está disponible.</p>
                                 @endif
-            <div style="margin-top: 20px; margin-left: 300px;">
-                <a href="{{ route('home') }}" class="btn custom-button">VOLVER AL MENÚ</a>
-                <a href="{{ route('categories.create') }}" class="btn custom-button">AGREGAR CATEGORÍA</a>
-                @if(!isset($results) || count($results) === 0)
-                <a href="{{ route('listacategory.pdf') }}" class="btn custom-button">DESCARGAR PDF</a>
-            @endif
+                            @endif
+            
+                        </div>
+                    </div>
+                @endforeach
+            
+                <div style="margin-top: 20px; margin-left: 300px;">
+                    <a href="{{ route('home') }}" class="btn custom-button">VOLVER AL MENÚ</a>
+                    <a href="{{ route('categories.create') }}" class="btn custom-button">AGREGAR CATEGORÍA</a>
+                    @if(!isset($results) || count($results) === 0)
+                        <a href="{{ route('listacategory.pdf') }}" class="btn custom-button">DESCARGAR PDF</a>
+                    @endif
+                </div>
             </div>
             
-            </div>
-        </div>
-    
-</div>
-
-
-  </div>
-  
-    @endif
-</div>
-
-</div>
-
-@endsection
+            @endsection
