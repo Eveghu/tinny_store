@@ -116,7 +116,7 @@ public function update(Request $request, $id)
     {
         $categories = categories::all();
         $pdf = PDF::loadview('pdf.listadocategories', compact('categories'));
-        return $pdf->download('listadocategories.pdf');
+        return $pdf->stream('listadocategories.pdf');
     }
     
 }

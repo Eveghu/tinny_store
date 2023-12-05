@@ -150,7 +150,6 @@
             </div>
         </div>
     
-    </form>
               <div class="mb-3">
             <label for="assor_quant" class="form-label">CANTIDAD SURTIDA:</label>
             <input type="text" name="assor_quant" id="assor_quant" class="form-control{{ $errors->has('assor_quant') ? ' is-invalid' : '' }}" value="{{ old('assor_quant') }}">

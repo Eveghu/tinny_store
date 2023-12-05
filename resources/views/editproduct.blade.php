@@ -78,79 +78,87 @@
                  <label class="form-check-label" for="size">{{ $product->size }}</label>
              </div>
             </div>     
-    <div class="mb-3">
-        <label for="sizes">TALLAS A SELECCIONAR:</label>
-        <div class="row">
-            <div class="col-2">
-                <div class="form-check">
-                    <input type="checkbox" name="size[]" class="form-check-input" value="CH" id="size" {{ isset($product) && $product->sizeIsSelected('CH') ? 'checked' : '' }}>
-                    <label class="form-check-label" for="size">CH</label>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="form-check">
-                    <input type="checkbox" name="size[]" class="form-check-input" value="M" id="size" {{ isset($product) && $product->sizeIsSelected('M') ? 'checked' : '' }}>
-                    <label class="form-check-label" for="size">M</label>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="form-check">
-                    <input type="checkbox" name="size[]" class="form-check-input" value="G" id="size" {{ isset($product) && $product->sizeIsSelected('G') ? 'checked' : '' }}>
-                    <label class="form-check-label" for="size">G</label>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="form-check">
-                    <input type="checkbox" name="size[]" class="form-check-input" value="XG" id="size" {{ isset($product) && $product->sizeIsSelected('XG') ? 'checked' : '' }}>
-                    <label class="form-check-label" for="size">XG</label>
-                </div>
-            </div>
-            <div class="col-2">
-                <div class="form-check">
-                    <input type="checkbox" name="size[]" class="form-check-input" value="UNI" id="size" {{ isset($product) && $product->sizeIsSelected('UNI') ? 'checked' : '' }}>
-                    <label class="form-check-label" for="size">UNI</label>
-                </div>
-            </div>
+            <label for="size">SELECCIONA EL TIPO DE TALLA:</label>
+            <select id="size" name="size[]" onchange="mostrarOpciones()">
+                <option value="numerica">Numérica</option>
+                <option value="tamaño">Tamaño</option>
+            </select>
+        <!-- Opciones de tamaño -->
+        <div id="opcionesTamaño" style="display:none;">
             <div class="row">
                 <div class="col-2">
                     <div class="form-check">
-                        <input type="checkbox" name="size[]" class="form-check-input" value="1" id="size" {{ isset($product) && $product->sizeIsSelected('1') ? 'checked' : '' }}>
+                        <input type="checkbox" name="size[]" class="form-check-input" value="CH" id="size">
+                        <label class="form-check-label" for="size">CH</label>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-check">
+                        <input type="checkbox" name="size[]" class="form-check-input" value="M" id="size">
+                        <label class="form-check-label" for="size">M</label>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-check">
+                        <input type="checkbox" name="size[]" class="form-check-input" value="G" id="size">
+                        <label class="form-check-label" for="size">G</label>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-check">
+                        <input type="checkbox" name="size[]" class="form-check-input" value="XG" id="size">
+                        <label class="form-check-label" for="size">XG</label>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="form-check">
+                        <input type="checkbox" name="size[]" class="form-check-input" value="UNI" id="size">
+                        <label class="form-check-label" for="size">UNI</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Opciones numéricas -->
+        <div id="opcionesNumerica" style="display:none;">
+            <div class="row">
+                <div class="col-2">
+                    <div class="form-check">
+                        <input type="checkbox" name="size[]" class="form-check-input" value="1" id="size">
                         <label class="form-check-label" for="size">1</label>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="form-check">
-                        <input type="checkbox" name="size[]" class="form-check-input" value="3" id="size" {{ isset($product) && $product->sizeIsSelected('3') ? 'checked' : '' }}>
+                        <input type="checkbox" name="size[]" class="form-check-input" value="3" id="size">
                         <label class="form-check-label" for="size">3</label>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="form-check">
-                        <input type="checkbox" name="size[]" class="form-check-input" value="5" id="size" {{ isset($product) && $product->sizeIsSelected('5') ? 'checked' : '' }}>
+                        <input type="checkbox" name="size[]" class="form-check-input" value="5" id="size">
                         <label class="form-check-label" for="size">5</label>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="form-check">
-                        <input type="checkbox" name="size[]" class="form-check-input" value="7" id="size" {{ isset($product) && $product->sizeIsSelected('7') ? 'checked' : '' }}>
+                        <input type="checkbox" name="size[]" class="form-check-input" value="7" id="size">
                         <label class="form-check-label" for="size">7</label>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="form-check">
-                        <input type="checkbox" name="size[]" class="form-check-input" value="9" id="size" {{ isset($product) && $product->sizeIsSelected('9') ? 'checked' : '' }}>
+                        <input type="checkbox" name="size[]" class="form-check-input" value="9" id="size">
                         <label class="form-check-label" for="size">9</label>
                     </div>
                 </div>
                 <div class="col-2">
                     <div class="form-check">
-                        <input type="checkbox" name="size[]" class="form-check-input" value="11" id="size" {{ isset($product) && $product->sizeIsSelected('11') ? 'checked' : '' }}>
+                        <input type="checkbox" name="size[]" class="form-check-input" value="11" id="size">
                         <label class="form-check-label" for="size">11</label>
                     </div>
                 </div>
-            <!-- Agrega más tallas aquí -->
-        </div>
-    
+            </div>
         <div class="mb-3">
             <label for="sku" class="form-label">SKU:</label>
             <input type="text" name="sku" value="{{ $product->sku }}" class="form-control{{ $errors->has('sku') ? ' is-invalid' : '' }}">            
@@ -224,4 +232,18 @@
 
     </form>
 </div>
+
+<script>
+    function mostrarOpciones() {
+        var seleccion = $("#size").val();
+
+        if (seleccion === "tamaño") {
+            $("#opcionesTamaño").show();
+            $("#opcionesNumerica").hide();
+        } else {
+            $("#opcionesTamaño").hide();
+            $("#opcionesNumerica").show();
+        }
+    }
+</script>
 @endsection

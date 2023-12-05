@@ -156,7 +156,7 @@ public function update(Request $request, $id)
         {
             $products = products::all();
             $pdf = PDF::loadview('pdf.listadosurtir', compact('products'));
-            return $pdf->download('listadosurtir.pdf');
+            return $pdf->stream('listadosurtir.pdf');
         }
     
     
