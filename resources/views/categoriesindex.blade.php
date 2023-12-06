@@ -89,7 +89,9 @@
                     <a href="{{ route('categories.create') }}" class="btn custom-button">AGREGAR CATEGORÍA</a>
                     @if(!isset($results) || count($results) === 0)
                         <a href="{{ route('listacategory.pdf') }}" class="btn custom-button">DESCARGAR PDF</a>
-         @endif
+                        @endif
+                    </div>
                 </div>
-            </div>    </div>
-@endsection
+            @endif
+        </div>
+    @endsection
