@@ -6,41 +6,40 @@
 <div class="container">
     <h1>CATEGORÍAS</h1>
     <style>
-   .custom-button {
-        background-color: #ff8bb4; /* Cambia el color de fondo a tu elección */
-        color: #fff; /* Cambia el color del texto a blanco */
-        border: none;
-        padding: 5px 10px; /* Añade un espacio interno al botón */
-        border-radius: 5px; /* Añade bordes redondeados */
-        transition: background-color 0.3s; /* Agrega una transición al color de fondo */
-    
-        /* Estilo al pasar el mouse por encima (hover) */
-        &:hover {
-            background-color: #e7d8df; /* Cambia el color de fondo al pasar el mouse */
+        .custom-button {
+            background-color: #ff8bb4; /* Cambia el color de fondo a tu elección */
+            color: #fff; /* Cambia el color del texto a blanco */
+            border: none;
+            padding: 5px 10px; /* Añade un espacio interno al botón */
+            border-radius: 5px; /* Añade bordes redondeados */
+            transition: background-color 0.3s; /* Agrega una transición al color de fondo */
         }
-    }
+
         .custom-delete {
-          font-size: 14px; /* Reduce el tamaño de la fuente */
-          background-color: rgb(218, 80, 92); /* Cambia el color de fondo a tu elección */
-          color: #fff; /* Cambia el color del texto a blanco */
-          border: none;
-          padding: 5px 10px; /* Añade un espacio interno al botón */
-          border-radius: 5px; /* Añade bordes redondeados */
-          transition: background-color 0.3s; /* Agrega una transición al color de fondo */
+            font-size: 14px; /* Reduce el tamaño de la fuente */
+            background-color: rgb(218, 80, 92); /* Cambia el color de fondo a tu elección */
+            color: #fff; /* Cambia el color del texto a blanco */
+            border: none;
+            padding: 5px 10px; /* Añade un espacio interno al botón */
+            border-radius: 5px; /* Añade bordes redondeados */
+            transition: background-color 0.3s; /* Agrega una transición al color de fondo */
         }
+
         .custom-edit {
             font-size: 14px; /* Reduce el tamaño de la fuente */
-        background-color: rgb(90, 163, 118); /* Cambia el color de fondo a tu elección */
-        color: #fff; /* Cambia el color del texto a blanco */
-        border: none;
-        padding: 5px 10px; /* Añade un espacio interno al botón */
-        border-radius: 5px; /* Añade bordes redondeados */
-        transition: background-color 0.3s; /* Agrega una transición al color de fondo */
-    
-        /* Estilo al pasar el mouse por encima (hover) */
-        &:hover {
-            background-color: #e7d8df; /* Cambia el color de fondo al pasar el mouse */
+            background-color: rgb(90, 163, 118); /* Cambia el color de fondo a tu elección */
+            color: #fff; /* Cambia el color del texto a blanco */
+            border: none;
+            padding: 5px 10px; /* Añade un espacio interno al botón */
+            border-radius: 5px; /* Añade bordes redondeados */
+            transition: background-color 0.3s; /* Agrega una transición al color de fondo */
         }
+
+        /* Estilo al pasar el mouse por encima (hover) */
+        .custom-button:hover,
+        .custom-edit:hover,
+        .custom-delete:hover {
+            background-color: #e7d8df; /* Cambia el color de fondo al pasar el mouse */
         }
     </style>
     <form action="{{ route('searchcategory') }}" method="GET" class="d-flex" role="search">
@@ -53,8 +52,8 @@
         <div class="card" style="margin-top: 20px; margin-right: 20px; width: 200px;">
             <div class="card-body">
                 <img style="height: 100px; width: 100px; background-color: #EFEFEF; margin: 10px auto;"
-            class="card-img-top rounded-circle mx-auto d-block"
-            src="/image_category/{{ $category->image_category }}" alt="">
+                    class="card-img-top rounded-circle mx-auto d-block"
+                    src="/image_category/{{ $category->image_category }}" alt="">
                 <h6 class="card-subtitle mb-2 text-muted">{{ $category->category_name }}</h6>
                 <div class="d-flex justify-content-around">
                     <a href="/categories/{{$category->id}}/editcategory" class="custom-edit">EDITAR</a>
@@ -68,29 +67,37 @@
         </div>
         @endforeach
     </div>
-    
+
     <div style="margin-top: 20px; margin-left: 450px;">
         <a href="{{ route('home') }}" class="btn custom-button">VOLVER AL MENÚ</a>
         <a href="{{ route('categories.create') }}" class="btn custom-button">AGREGAR CATEGORÍA</a>
     </div>
-          
-            @else
-            <div class="row mt-4">
-                @foreach ($categories as $category)
-                    <div class="card" style="margin-top: 20px; margin-right: 20px; width: 200px;">
-                      <div class="card-body">
+
+    @else
+    <div class="row mt-4">
+        @foreach ($categories as $category)
+        <div class="card" style="margin-top: 20px; margin-right: 20px; width: 200px;">
+            <div class="card-body">
                 <img style="height: 100px; width: 100px; background-color: #EFEFEF; margin: 10px auto;"
-            class="card-img-top rounded-circle mx-auto d-block"
-            src="/image_category/{{ $category->image_category }}" alt="">
+                    class="card-img-top rounded-circle mx-auto d-block"
+                    src="/image_category/{{ $category->image_category }}" alt="">
                 <h6 class="card-subtitle mb-2 text-muted">{{ $category->category_name }}</h6>
                 <div class="d-flex justify-content-around">
-                <div style="margin-top: 20px; margin-left: 300px;">
-                    <a href="{{ route('home') }}" class="btn custom-button">VOLVER AL MENÚ</a>
-                    <a href="{{ route('categories.create') }}" class="btn custom-button">AGREGAR CATEGORÍA</a>
-                    @if(!isset($results) || count($results) === 0)
-                        <a href="{{ route('listacategory.pdf') }}" class="btn custom-button">DESCARGAR PDF</a>
-                        @endif
-                    </div>
+                    <!-- Your content here -->
                 </div>
+            </div>
         </div>
-    @endsection
+        @endforeach
+    </div>
+
+    <div style="margin-top: 20px; margin-left: 300px;">
+        <a href="{{ route('home') }}" class="btn custom-button">VOLVER AL MENÚ</a>
+        <a href="{{ route('categories.create') }}" class="btn custom-button">AGREGAR CATEGORÍA</a>
+        @if(!isset($results) || count($results) === 0)
+        <a href="{{ route('listacategory.pdf') }}" class="btn custom-button">DESCARGAR PDF</a>
+        @endif
+    </div>
+
+    @endif
+</div>
+@endsection
