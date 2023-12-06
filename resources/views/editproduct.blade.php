@@ -159,6 +159,7 @@
                     </div>
                 </div>
             </div>
+        </div>
         <div class="mb-3">
             <label for="sku" class="form-label">SKU:</label>
             <input type="text" name="sku" value="{{ $product->sku }}" class="form-control{{ $errors->has('sku') ? ' is-invalid' : '' }}">            
