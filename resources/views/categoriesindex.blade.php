@@ -52,11 +52,9 @@
         @foreach ($results as $category)
         <div class="card" style="margin-top: 20px; margin-right: 20px; width: 200px;">
             <div class="card-body">
-                @if($category->image_category)
-                            <img style="height: 100px; width: 100px; background-color: #EFEFEF; margin: 20px;"
-                                class="card-img-top rounded-circle mx-auto d-block"
-                                src="{{ asset('image_category/'.$category->image_category) }}" alt="">
-                            @endif
+                <img style="height: 100px; width: 100px; background-color: #EFEFEF; margin: 10px auto;"
+            class="card-img-top rounded-circle mx-auto d-block"
+            src="/image_category/{{ $category->image_category }}" alt="">
                 <h6 class="card-subtitle mb-2 text-muted">{{ $category->category_name }}</h6>
                 <div class="d-flex justify-content-around">
                     <a href="/categories/{{$category->id}}/editcategory" class="custom-edit">EDITAR</a>
@@ -80,22 +78,12 @@
             <div class="row mt-4">
                 @foreach ($categories as $category)
                     <div class="card" style="margin-top: 20px; margin-right: 20px; width: 200px;">
-                        <div class="card-body">
-                            @if($category->image_category)
-                                <?php
-                                    $image_category = public_path('image_category/' . $category->image_category);
-                                ?>
-                                @if(file_exists($image_category) && is_file($image_category))
-                                    <img style="height: 100px; width: 100px; background-color: #EFEFEF; margin: 20px;"
-                                        class="card-img-top rounded-circle mx-auto d-block"
-                                        src="{{ asset('image_category/'.$category->image_category) }}" alt="">
-                                @else
-                                    <p>La imagen no está disponible.</p>
-                                @endif
-                            @endif
-                                </div>
-                @endforeach
-            
+                      <div class="card-body">
+                <img style="height: 100px; width: 100px; background-color: #EFEFEF; margin: 10px auto;"
+            class="card-img-top rounded-circle mx-auto d-block"
+            src="/image_category/{{ $category->image_category }}" alt="">
+                <h6 class="card-subtitle mb-2 text-muted">{{ $category->category_name }}</h6>
+                <div class="d-flex justify-content-around">
                 <div style="margin-top: 20px; margin-left: 300px;">
                     <a href="{{ route('home') }}" class="btn custom-button">VOLVER AL MENÚ</a>
                     <a href="{{ route('categories.create') }}" class="btn custom-button">AGREGAR CATEGORÍA</a>
@@ -103,7 +91,5 @@
                         <a href="{{ route('listacategory.pdf') }}" class="btn custom-button">DESCARGAR PDF</a>
          @endif
                 </div>
-            </div>
-        @endif
-    </div>
+            </div>    </div>
 @endsection
