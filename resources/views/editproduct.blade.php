@@ -79,19 +79,20 @@
              </div>
             </div>     
             <label for="size">SELECCIONA EL TIPO DE TALLA:</label>
-            <select id="size" name="size[]" onchange="mostrarOpciones()">
-                <option value="numerica">Numérica</option>
-                <option value="tamaño">Tamaño</option>
+            <select id="sizeType" name="sizeType" onchange="mostrarOpciones()">
+                <option value="Numerica" {{ $product->sizeType == 'Numerica' ? 'selected' : '' }}>Numérica</option>
+                <option value="Tamaño" {{ $product->sizeType == 'Tamaño' ? 'selected' : '' }}>Tamaño</option>
             </select>
-        <!-- Opciones de tamaño -->
-        <div id="opcionesTamaño" style="display:none;">
-            <div class="row">
-                <div class="col-2">
-                    <div class="form-check">
-                        <input type="checkbox" name="size[]" class="form-check-input" value="CH" id="size">
-                        <label class="form-check-label" for="size">CH</label>
+            
+            <!-- Opciones de tamaño -->
+            <div id="opcionesTamaño" style="{{ $product->sizeType == 'Tamaño' ? '' : 'display:none;' }}">
+                <div class="row">
+                    <div class="col-2">
+                        <div class="form-check">
+                            <input type="checkbox" name="size[]" class="form-check-input" value="CH" id="sizeCH" {{ in_array('CH', $product->sizes) ? 'checked' : '' }}>
+                            <label class="form-check-label" for="sizeCH">CH</label>
+                        </div>
                     </div>
-                </div>
                 <div class="col-2">
                     <div class="form-check">
                         <input type="checkbox" name="size[]" class="form-check-input" value="M" id="size">
