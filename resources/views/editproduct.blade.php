@@ -80,8 +80,8 @@
             </div>     
             <label for="size">SELECCIONA EL TIPO DE TALLA:</label>
             <select id="size" name="size[]" onchange="mostrarOpciones()">
-                <option value="Numerica">Numérica</option>
-                <option value="Tamaño">Tamaño</option>
+                <option value="numerica">Numérica</option>
+                <option value="tamaño">Tamaño</option>
             </select>
         <!-- Opciones de tamaño -->
         <div id="opcionesTamaño" style="display:none;">
