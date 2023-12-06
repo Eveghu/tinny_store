@@ -37,8 +37,15 @@
                 <tr>
                     <td>{{$category->category_name}}</td>
                     <td class="text-right">
-                        <img src="{{ public_path('image_category/' . $category->image_category) }}" alt="Category" width="100">
-                    </td>
+                        @php
+                        $image_category = public_path('image_category/' . $category->image_category);
+                        @endphp
+        
+                        @if (file_exists($image_category) && is_file($image_category))
+                        <img src="{{ $image_category }}" alt="Category" width="100">
+                        @else
+                        <p>La imagen no está disponible.</p>
+                        @endif                    </td>
                 </tr>
             @endforeach
         </tbody>
