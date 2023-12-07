@@ -86,7 +86,7 @@ public function update(Request $request, $id)
         $imageName = time() . '.' . $request->image_category->extension();
         $request->image_category->move(public_path('image_category'), $imageName);
 
-        $category->image_category = $imageName; 
+        $category->image_category = $image_category; 
     }
     $category->save();
 
