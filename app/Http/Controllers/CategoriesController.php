@@ -42,8 +42,8 @@ class CategoriesController extends Controller
         $category = new Categories();
         $category -> category_name = $request -> input('category_name');
         if ($request->hasFile('image_category')) {
-            $imageName = time() . '.' . $request->image_category->extension(); // Cambiar "$request->image" a "$request->imagen_equipo"
-            $request->image_category->move(public_path('image_category'), $imageName);
+            $image_category = time() . '.' . $request->image_category->extension(); // Cambiar "$request->image" a "$request->imagen_equipo"
+            $request->image_category->move(public_path('image_category'), $image_category);
             $category->image_category=$imageName;
     }        
     $category -> save();
@@ -77,14 +77,14 @@ public function update(Request $request, $id)
     if ($request->hasFile('image_category')) {
         // Eliminar la imagen anterior si existe
         if ($category->image_category) {
-            $imagePath = public_path('image_category/') . $category->image_category;
-            if (file_exists($imagePath)) {
-                unlink($imagePath);
+            $image_category = public_path('image_category/') . $category->image_category;
+            if (file_exists($image_category)) {
+                unlink($image_category);
             }
         }
 
-        $imageName = time() . '.' . $request->image_category->extension();
-        $request->image_category->move(public_path('image_category'), $imageName);
+        $image_category = time() . '.' . $request->image_category->extension();
+        $request->image_category->move(public_path('image_category'), $image_category);
 
         $category->image_category = $image_category; 
     }
