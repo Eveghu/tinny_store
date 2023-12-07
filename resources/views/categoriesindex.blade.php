@@ -77,13 +77,16 @@
     <div class="row mt-4">
         @foreach ($categories as $category)
         <div class="card" style="margin-top: 20px; margin-right: 20px; width: 200px;">
-            <div class="card-body">
-                <img style="height: 100px; width: 100px; background-color: #EFEFEF; margin: 10px auto;"
+            <img style="height: 100px; width: 100px; background-color: #EFEFEF; margin: 10px auto;"
                     class="card-img-top rounded-circle mx-auto d-block"
                     src="/image_category/{{ $category->image_category }}" alt="">
                 <h6 class="card-subtitle mb-2 text-muted">{{ $category->category_name }}</h6>
                 <div class="d-flex justify-content-around">
-                    <!-- Your content here -->
+                    <a href="/categories/{{$category->id}}/editcategory" class="custom-edit">EDITAR</a>
+                    <form method="POST" action="{{ route('categories.destroy', $category->id) }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Seguro que quieres eliminar esta categoría?')">ELIMINAR</button>
                 </div>
             </div>
         </div>
