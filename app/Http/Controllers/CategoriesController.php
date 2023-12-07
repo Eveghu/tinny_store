@@ -98,7 +98,7 @@ public function update(Request $request, $id)
     public function destroy($id)
     {
         $category = Categories::find($id);
-        $imagePath = public_path('image_category/' . $category->image_category); // Ruta a la imagen en el sistema de archivos
+        $image_category = public_path('image_category/' . $category->image_category); // Ruta a la imagen en el sistema de archivos
         if (file_exists($image_category)) {
             unlink($image_category); // Elimina la imagen
         }
