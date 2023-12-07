@@ -87,6 +87,7 @@
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger" onclick="return confirm('Seguro que quieres eliminar esta categoría?')">ELIMINAR</button>
+                    </form>
                 </div>
             </div>
         </div>
