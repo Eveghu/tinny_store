@@ -95,21 +95,25 @@ public function update(Request $request, $id)
 
 
 
-    public function destroy($id)
-    {
-        $category = Categories::find($id);
-        $image_category = public_path('image_category/' . $category->image_category); // Ruta a la imagen en el sistema de archivos
-        if (file_exists($image_category)) {
-            unlink($image_category); // Elimina la imagen
-        }
-        if (!$category) {
-            return redirect('/categories')->with('error', 'La categoría no existe o ya ha sido eliminado');
-        }
-    
-        $category->delete();
-    
-        return redirect('/categories')->with('success', 'Categoría eliminada exitosamente');
+public function destroy($id)
+{
+    $category = Categories::find($id);
+
+    if (!$category) {
+        return redirect('/categories')->with('error', 'La categoría no existe o ya ha sido eliminada');
     }
+
+    $imagePath = public_path('image_category/' . $category->image_category);
+
+    if (file_exists($imagePath)) {
+        unlink($imagePath); // Corregir la referencia a la variable
+    }
+
+    $category->delete();
+
+    return redirect('/categories')->with('success', 'Categoría eliminada exitosamente');
+}
+
     
         // ...
     public function PDF()
