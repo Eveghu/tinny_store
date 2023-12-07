@@ -44,7 +44,7 @@ class CategoriesController extends Controller
         if ($request->hasFile('image_category')) {
             $image_category = time() . '.' . $request->image_category->extension(); // Cambiar "$request->image" a "$request->imagen_equipo"
             $request->image_category->move(public_path('image_category'), $image_category);
-            $category->image_category=$imageName;
+            $category->image_category=$image_category;
     }        
     $category -> save();
         return redirect()->route('categories.index');
