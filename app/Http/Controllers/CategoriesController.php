@@ -99,8 +99,8 @@ public function update(Request $request, $id)
     {
         $category = Categories::find($id);
         $imagePath = public_path('image_category/' . $category->image_category); // Ruta a la imagen en el sistema de archivos
-        if (file_exists($imagePath)) {
-            unlink($imagePath); // Elimina la imagen
+        if (file_exists($image_category)) {
+            unlink($image_category); // Elimina la imagen
         }
         if (!$category) {
             return redirect('/categories')->with('error', 'La categoría no existe o ya ha sido eliminado');
